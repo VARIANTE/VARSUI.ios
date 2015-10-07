@@ -1,0 +1,6 @@
+framework module VARSUI {
+  umbrella header "VARSUI.h"
+
+  export *
+  module * { export * }
+}
