@@ -141,9 +141,16 @@ static const int DEFAULT_UUID = -1;
 {
     _shouldHideKeyboard = shouldHideKeyboard;
 
-    UIView *dummyKeyboard = [[UIView alloc] initWithFrame:CGRectZero];
-    [self setInputView:dummyKeyboard];
-    vs_dealloc(dummyKeyboard);
+    if (shouldHideKeyboard)
+    {
+        UIView *dummyKeyboard = [[UIView alloc] initWithFrame:CGRectZero];
+        [self setInputView:dummyKeyboard];
+        vs_dealloc(dummyKeyboard);
+
+        UITextInputAssistantItem *item = [self inputAssistantItem];
+        [item setLeadingBarButtonGroups:@[]];
+        [item setTrailingBarButtonGroups:@[]];
+    }
 }
 
 #pragma mark - VSUIViewUpdateDelegate
