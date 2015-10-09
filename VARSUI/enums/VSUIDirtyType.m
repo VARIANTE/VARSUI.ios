@@ -1,96 +1,76 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #import "VSUIDirtyType.h"
 
-/**
- *  @inheritDoc
- */
-NSString *NSStringFromVSUIDirtyType(VSUIDirtyType type)
-{
-    switch (type)
-    {
+NSString *NSStringFromVSUIDirtyType(VSUIDirtyType type) {
+    switch (type) {
         case VSUIDirtyTypeNone:     return @"VSUIDirtyTypeNone";
         case VSUIDirtyTypeMaxTypes: return @"VSUIDirtyTypeMaxTypes";
-        default:
-        {
+        default: {
             NSString *o = @"";
 
-            for (unsigned int i = 0; i < sizeof(type)*CHAR_BIT; i++)
-            {
+            for (unsigned int i = 0; i < sizeof(type)*CHAR_BIT; i++) {
                 unsigned int bit = (type >> i) & 1;
 
-                if (bit)
-                {
-                    switch (1<<i)
-                    {
-                        case VSUIDirtyTypeLayout:
-                        {
+                if (bit) {
+                    switch (1<<i) {
+                        case VSUIDirtyTypeLayout: {
                             o = [o stringByAppendingString:@"VSUIDirtyTypeLayout|"];
                             break;
                         }
 
-                        case VSUIDirtyTypeOrientation:
-                        {
+                        case VSUIDirtyTypeOrientation: {
                             o = [o stringByAppendingString:@"VSUIDirtyTypeOrientation|"];
                             break;
                         }
 
-                        case VSUIDirtyTypeState:
-                        {
+                        case VSUIDirtyTypeState: {
                             o = [o stringByAppendingString:@"VSUIDirtyTypeState|"];
                             break;
                         }
 
-                        case VSUIDirtyTypeData:
-                        {
+                        case VSUIDirtyTypeData: {
                             o = [o stringByAppendingString:@"VSUIDirtyTypeData|"];
                             break;
                         }
 
-                        case VSUIDirtyTypeLocale:
-                        {
+                        case VSUIDirtyTypeLocale: {
                             o = [o stringByAppendingString:@"VSUIDirtyTypeLocale|"];
                             break;
                         }
 
-                        case VSUIDirtyTypeDepth:
-                        {
+                        case VSUIDirtyTypeDepth: {
                             o = [o stringByAppendingString:@"VSUIDirtyTypeDepth|"];
                             break;
                         }
 
-                        case VSUIDirtyTypeConfig:
-                        {
+                        case VSUIDirtyTypeConfig: {
                             o = [o stringByAppendingString:@"VSUIDirtyTypeConfig|"];
                             break;
                         }
 
-                        case VSUIDirtyTypeStyle:
-                        {
+                        case VSUIDirtyTypeStyle: {
                             o = [o stringByAppendingString:@"VSUIDirtyTypeStyle|"];
                             break;
                         }
 
-                        case VSUIDirtyTypeMode:
-                        {
+                        case VSUIDirtyTypeMode: {
                             o = [o stringByAppendingString:@"VSUIDirtyTypeMode|"];
                             break;
                         }
 
-                        case VSUIDirtyTypeCustom:
-                        {
+                        case VSUIDirtyTypeCustom: {
                             o = [o stringByAppendingString:@"VSUIDirtyTypeCustom|"];
                             break;
                         }
 
-                        default:
-                        {
+                        default: {
                             o = [o stringByAppendingString:[NSString stringWithFormat:@"%@|", @(1<<i).stringValue]];
                             break;
                         }
@@ -98,12 +78,10 @@ NSString *NSStringFromVSUIDirtyType(VSUIDirtyType type)
                 }
             }
 
-            if ([o isEqualToString:@""])
-            {
+            if ([o isEqualToString:@""]) {
                 return @(type).stringValue;
             }
-            else
-            {
+            else {
                 return [o substringToIndex:o.length - 1];
             }
         }

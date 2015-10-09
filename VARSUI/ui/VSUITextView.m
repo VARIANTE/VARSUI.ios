@@ -1,36 +1,34 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>
 
 #import "VSUITextView.h"
 
-@interface VSUITextView()
-{
+@interface VSUITextView() {
 @private
     VSUIViewUpdate *_updateDelegate;
 }
 
 @end
 
-#pragma mark - --------------------------------------------------------------------------
+#pragma mark -
 
 @implementation VSUITextView
 
-#pragma mark - VSUIViewUpdateDelegate
+#pragma mark VSUIViewUpdateDelegate
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
 @dynamic updateDelegate;
 
-- (VSUIViewUpdate *)updateDelegate
-{
+- (VSUIViewUpdate *)updateDelegate {
     if (_updateDelegate != nil) return _updateDelegate;
 
     _updateDelegate = [[VSUIViewUpdate alloc] init];
@@ -40,33 +38,26 @@
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
 @dynamic interfaceOrientation;
 
-- (UIInterfaceOrientation)interfaceOrientation
-{
+- (UIInterfaceOrientation)interfaceOrientation {
     return [self.updateDelegate interfaceOrientation];
 }
 
-- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     [self.updateDelegate setInterfaceOrientation:interfaceOrientation];
 }
 
-#pragma mark - Behaviors
+#pragma mark Behaviors
 
-/**
- *  @inheritDoc
- */
 @synthesize shouldHideKeyboard = _shouldHideKeyboard;
 
-- (void)setShouldHideKeyboard:(BOOL)shouldHideKeyboard
-{
+- (void)setShouldHideKeyboard:(BOOL)shouldHideKeyboard {
     _shouldHideKeyboard = shouldHideKeyboard;
 
-    if (shouldHideKeyboard)
-    {
+    if (shouldHideKeyboard) {
         UIView *dummyKeyboard = [[UIView alloc] initWithFrame:CGRectZero];
         [self setInputView:dummyKeyboard];
         vs_dealloc(dummyKeyboard);
@@ -77,48 +68,40 @@
     }
 }
 
-/**
- *  @inheritDoc
- */
 @synthesize shouldRedirectTouchesToNextResponder = _shouldRedirectTouchesToNextResponder;
 
-#pragma mark - VSUIViewUpdateDelegate
+#pragma mark VSUIViewUpdateDelegate
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (void)setNeedsUpdate
-{
+- (void)setNeedsUpdate {
     [self update];
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (void)update
-{
+- (void)update {
     [self.updateDelegate viewDidUpdate];
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (BOOL)isDirty:(VSUIDirtyType)dirtyType
-{
+- (BOOL)isDirty:(VSUIDirtyType)dirtyType {
     return [self.updateDelegate isDirty:dirtyType];
 }
 
-#pragma mark - Lifecycle
+#pragma mark Lifecycle
 
 /**
- *  @inheritDoc UIView
+ * @inheritDoc UIView
  */
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
 
-    if (self)
-    {
+    if (self) {
         [self willInit];
         [self didInit];
     }
@@ -127,14 +110,12 @@
 }
 
 /**
- *  @inheritDoc UITextView
+ * @inheritDoc UITextView
  */
-- (id)initWithFrame:(CGRect)frame textContainer:(NSTextContainer *)textContainer
-{
+- (id)initWithFrame:(CGRect)frame textContainer:(NSTextContainer *)textContainer {
     self = [super initWithFrame:frame textContainer:textContainer];
 
-    if (self)
-    {
+    if (self) {
         [self willInit];
         [self didInit];
     }
@@ -143,10 +124,9 @@
 }
 
 /**
- *  @inheritDoc NSObject
+ * @inheritDoc NSObject
  */
-- (void)dealloc
-{
+- (void)dealloc {
     [self willDealloc];
 
 #if !__has_feature(objc_arc)
@@ -154,74 +134,47 @@
 #endif
 }
 
-/**
- *  @inheritDoc
- */
-- (void)willInit
-{
+- (void)willInit {
     [self setShouldRedirectTouchesToNextResponder:NO];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)didInit
-{
+- (void)didInit {
     [self.updateDelegate viewDidInit];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)willDealloc
-{
+- (void)willDealloc {
     vs_dealloc(_updateDelegate);
 }
 
-#pragma mark - Drawing
+#pragma mark Drawing
 
-/**
- *  @inheritDoc
- */
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 
     [self.updateDelegate setDirty:VSUIDirtyTypeLayout];
 }
 
-#pragma mark - Positioning
+#pragma mark Positioning
 
-/**
- *  @inheritDoc
- */
-- (void)scrollToBottom:(BOOL)animated
-{
+- (void)scrollToBottom:(BOOL)animated {
     // HACK: Somehow contentSize is not immediately updated after the text is set, so we need an alternative way to calculate the content height.
     CGPoint offsetPoint = CGPointMake(0.0, fmax(0.0, [self sizeThatFits:CGSizeMake(self.frame.size.width, FLT_MAX)].height - self.frame.size.height));
     [self setContentOffset:offsetPoint animated:animated];
 }
 
-#pragma mark - Formatting
+#pragma mark Formatting
 
-/**
- *  @inheritDoc
- */
-- (CGRect)selectedRangeRect
-{
+- (CGRect)selectedRangeRect {
     UITextRange *selectionRange = [self selectedTextRange];
     NSArray *selectionRects = [self selectionRectsForRange:selectionRange];
 
     CGRect completeRect = CGRectNull;
 
-    for (UITextSelectionRect *selectionRect in selectionRects)
-    {
-        if (CGRectIsNull(completeRect))
-        {
+    for (UITextSelectionRect *selectionRect in selectionRects) {
+        if (CGRectIsNull(completeRect)) {
             completeRect = selectionRect.rect;
         }
-        else
-        {
+        else {
             completeRect = CGRectUnion(completeRect,selectionRect.rect);
         }
     }
@@ -229,64 +182,52 @@
     return completeRect;
 }
 
-#pragma mark - Event Handling
+#pragma mark Event Handling
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesBegan:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesBegan:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesMoved:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesMoved:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesEnded:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesEnded:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesCancelled:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesCancelled:touches withEvent:event];
     }
 }

@@ -1,9 +1,9 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>
@@ -11,33 +11,31 @@
 #import "VSUILabel.h"
 
 /**
- *  Default UUID.
+ * Default UUID.
  */
 static const int DEFAULT_UUID = -1;
 
-#pragma mark - --------------------------------------------------------------------------
+#pragma mark -
 
-@interface VSUILabel()
-{
+@interface VSUILabel() {
 @private
     VSUIViewUpdate *_updateDelegate;
 }
 
 @end
 
-#pragma mark - --------------------------------------------------------------------------
+#pragma mark -
 
 @implementation VSUILabel VS_UPDATE_ON_DRAWRECT
 
-#pragma mark - VSUIViewUpdateDelegate
+#pragma mark VSUIViewUpdateDelegate
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
 @dynamic updateDelegate;
 
-- (VSUIViewUpdate *)updateDelegate
-{
+- (VSUIViewUpdate *)updateDelegate {
     if (_updateDelegate != nil) return _updateDelegate;
 
     _updateDelegate = [[VSUIViewUpdate alloc] init];
@@ -47,98 +45,75 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
 @dynamic interfaceOrientation;
 
-- (UIInterfaceOrientation)interfaceOrientation
-{
+- (UIInterfaceOrientation)interfaceOrientation {
     return [self.updateDelegate interfaceOrientation];
 }
 
-- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     [self.updateDelegate setInterfaceOrientation:interfaceOrientation];
 }
 
-#pragma mark - UILabel
+#pragma mark UILabel
 
 /**
- *  @inheritDoc UILabel
+ * @inheritDoc UILabel
  */
-- (void)setText:(NSString *)text
-{
+- (void)setText:(NSString *)text {
     [super setText:text];
     [self.updateDelegate setDirty:VSUIDirtyTypeData];
 }
 
-#pragma mark - Identifiers
+#pragma mark Identifiers
 
-/**
- *  @inheritDoc
- */
 @synthesize UUID = _uUID;
 
-#pragma mark - Behaviors
+#pragma mark Behaviors
 
-/**
- *  @inheritDoc
- */
 @synthesize shouldRedirectTouchesToNextResponder = _shouldRedirectTouchesToNextResponder;
 
-#pragma mark - Context Menu
+#pragma mark Context Menu
 
-/**
- *  @inheritDoc
- */
 @synthesize menuEnabled = _menuEnabled;
 
-- (void)setMenuEnabled:(BOOL)menuEnabled
-{
+- (void)setMenuEnabled:(BOOL)menuEnabled {
     _menuEnabled = menuEnabled;
 
     [self setUserInteractionEnabled:YES];
 }
 
-/**
- *  @inheritDoc
- */
 @synthesize menuGesturesEnabled = _menuGesturesEnabled;
 
-#pragma mark - Styles
+#pragma mark Styles
 
-/**
- *  @inheritDoc
- */
 @synthesize textEdgeInsets = _textEdgeInsets;
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (void)update
-{
+- (void)update {
     [self.updateDelegate viewDidUpdate];
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (BOOL)isDirty:(VSUIDirtyType)dirtyType
-{
+- (BOOL)isDirty:(VSUIDirtyType)dirtyType {
     return [self.updateDelegate isDirty:dirtyType];
 }
 
-#pragma mark - Lifecycle
+#pragma mark Lifecycle
 
 /**
- *  @inheritDoc UIView
+ * @inheritDoc UIView
  */
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
 
-    if (self)
-    {
+    if (self) {
         [self setUUID:DEFAULT_UUID];
         [self willInit];
         [self didInit];
@@ -147,15 +122,10 @@ static const int DEFAULT_UUID = -1;
     return self;
 }
 
-/**
- *  @inheritDoc
- */
-- (id)initWithFrame:(CGRect)frame UUID:(int)UUID
-{
+- (id)initWithFrame:(CGRect)frame UUID:(int)UUID {
     self = [super initWithFrame:frame];
 
-    if (self)
-    {
+    if (self) {
         [self setUUID:UUID];
         [self willInit];
         [self didInit];
@@ -164,21 +134,16 @@ static const int DEFAULT_UUID = -1;
     return self;
 }
 
-/**
- *  @inheritDoc
- */
-- (id)initWithUUID:(int)UUID
-{
+- (id)initWithUUID:(int)UUID {
     self = [self initWithFrame:CGRectZero UUID:UUID];
 
     return self;
 }
 
 /**
- *  @inheritDoc NSObject
+ * @inheritDoc NSObject
  */
-- (void)dealloc
-{
+- (void)dealloc {
     [self willDealloc];
 
 #if !__has_feature(objc_arc)
@@ -186,11 +151,7 @@ static const int DEFAULT_UUID = -1;
 #endif
 }
 
-/**
- *  @inheritDoc
- */
-- (void)willInit
-{
+- (void)willInit {
     [self setTextEdgeInsets:UIEdgeInsetsZero];
     [self setShouldRedirectTouchesToNextResponder:NO];
     [self setMenuGesturesEnabled:YES];
@@ -205,92 +166,72 @@ static const int DEFAULT_UUID = -1;
     vs_dealloc(singleTapGestureRecognizer);
 }
 
-/**
- *  @inheritDoc
- */
-- (void)didInit
-{
+- (void)didInit {
     [self.updateDelegate viewDidInit];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)willDealloc
-{
+- (void)willDealloc {
     vs_dealloc(_updateDelegate);
 }
 
-#pragma mark - Drawing
+#pragma mark Drawing
 
 /**
- *  @inheritDoc UIView
+ * @inheritDoc UIView
  */
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 
     [self.updateDelegate setDirty:VSUIDirtyTypeLayout];
 }
 
 /**
- *  @inheritDoc UILabel
+ * @inheritDoc UILabel
  */
-- (void)drawTextInRect:(CGRect)rect
-{
+- (void)drawTextInRect:(CGRect)rect {
     return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, self.textEdgeInsets)];
 }
 
-#pragma mark - Behaviors
+#pragma mark Behaviors
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (BOOL)canBecomeFirstResponder
-{
+- (BOOL)canBecomeFirstResponder {
     return self.menuEnabled;
 }
 
-#pragma mark - Context Menu
+#pragma mark Context Menu
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
-{
-    if (self.menuEnabled)
-    {
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    if (self.menuEnabled) {
         return (action == @selector(copy:) || action == @selector(paste:));
     }
-    else
-    {
+    else {
         return NO;
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)copy:(id)sender
-{
+- (void)copy:(id)sender {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     [pasteboard setString:self.text];
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)paste:(id)sender
-{
+- (void)paste:(id)sender {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     [self setText:pasteboard.string];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)revealMenu
-{
+- (void)revealMenu {
     if (!self.menuEnabled) return;
 
     [self becomeFirstResponder];
@@ -300,11 +241,7 @@ static const int DEFAULT_UUID = -1;
     [menu setMenuVisible:YES animated:YES];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)hideMenu
-{
+- (void)hideMenu {
     if (!self.menuEnabled) return;
 
     UIMenuController *menu = [UIMenuController sharedMenuController];
@@ -314,94 +251,79 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- *  @private
+ * @private
  *
- *  Handler invoked when the menu should be revealed.
+ * Handler invoked when the menu should be revealed.
  *
- *  @param gestureRecognizer
+ * @param gestureRecognizer
  */
-- (void)_onRevealMenu:(UIGestureRecognizer *)gestureRecognizer
-{
+- (void)_onRevealMenu:(UIGestureRecognizer *)gestureRecognizer {
     if (!self.menuGesturesEnabled) return;
 
-    if (gestureRecognizer.state == UIGestureRecognizerStateBegan)
-    {
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
         [self revealMenu];
     }
 }
 
 /**
- *  @private
+ * @private
  *
- *  Handler invoked when the menu should be hidden.
+ * Handler invoked when the menu should be hidden.
  *
- *  @param gestureRecognizer
+ * @param gestureRecognizer
  */
-- (void)_onHideMenu:(UIGestureRecognizer *)gestureRecognizer
-{
+- (void)_onHideMenu:(UIGestureRecognizer *)gestureRecognizer {
     [self hideMenu];
 }
 
-#pragma mark - Event Handling
+#pragma mark Event Handling
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesBegan:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesBegan:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesMoved:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesMoved:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesEnded:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesEnded:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     if (!self.menuGesturesEnabled) return;
 
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesCancelled:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesCancelled:touches withEvent:event];
     }
 }

@@ -1,9 +1,9 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>
@@ -12,11 +12,7 @@
 
 @implementation VSColorUtil
 
-/**
- *  @inheritDoc
- */
-+ (UIColor *)modifyRGBOfColor:(UIColor *)color byUniformValue:(CGFloat)value
-{
++ (UIColor *)modifyRGBOfColor:(UIColor *)color byUniformValue:(CGFloat)value {
     CGFloat newRed, newGreen, newBlue, newAlpha;
 
     [color getRed:&newRed green:&newGreen blue:&newBlue alpha:&newAlpha];
@@ -27,11 +23,7 @@
     return [UIColor colorWithRed:newRed green:newGreen blue:newBlue alpha:newAlpha];
 }
 
-/**
- *  @inheritDoc
- */
-+ (UIColor *)modifyRGBOfColor:(UIColor *)color red:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
-{
++ (UIColor *)modifyRGBOfColor:(UIColor *)color red:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue {
     CGFloat newRed, newGreen, newBlue, newAlpha;
 
     [color getRed:&newRed green:&newGreen blue:&newBlue alpha:&newAlpha];
@@ -42,11 +34,7 @@
     return [UIColor colorWithRed:newRed green:newGreen blue:newBlue alpha:newAlpha];
 }
 
-/**
- *  @inheritDoc
- */
-+ (UIColor *)modifyAlphaOfColor:(UIColor *)color toValue:(CGFloat)value
-{
++ (UIColor *)modifyAlphaOfColor:(UIColor *)color toValue:(CGFloat)value {
     CGFloat newRed, newGreen, newBlue, newAlpha;
 
     [color getRed:&newRed green:&newGreen blue:&newBlue alpha:&newAlpha];
@@ -56,11 +44,7 @@
     return [UIColor colorWithRed:newRed green:newGreen blue:newBlue alpha:newAlpha];
 }
 
-/**
- *  @inheritDoc
- */
-+ (UIColor *)invertedColorOfColor:(UIColor *)color
-{
++ (UIColor *)invertedColorOfColor:(UIColor *)color {
     CGFloat newRed, newGreen, newBlue, newAlpha;
 
     [color getRed:&newRed green:&newGreen blue:&newBlue alpha:&newAlpha];
@@ -71,11 +55,7 @@
     return [UIColor colorWithRed:newRed green:newGreen blue:newBlue alpha:newAlpha];
 }
 
-/**
- *  @inheritDoc
- */
-+ (UIColor *)colorWithHex:(unsigned int)hex alpha:(CGFloat)alpha
-{
++ (UIColor *)colorWithHex:(unsigned int)hex alpha:(CGFloat)alpha {
     CGFloat red = ((hex >> 16) & 0xFF) / 255.0;
     CGFloat green = ((hex >> 8) & 0xFF) / 255.0;
     CGFloat blue = ((hex >> 0) & 0xFF) / 255.0;
@@ -83,11 +63,7 @@
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
-/**
- *  @inheritDoc
- */
-+ (UIColor *)invertedColorWithHex:(unsigned int)hex alpha:(CGFloat)alpha
-{
++ (UIColor *)invertedColorWithHex:(unsigned int)hex alpha:(CGFloat)alpha {
     CGFloat red = ((hex >> 16) & 0xFF) / 255.0;
     CGFloat green = ((hex >> 8) & 0xFF) / 255.0;
     CGFloat blue = ((hex >> 0) & 0xFF) / 255.0;
@@ -95,27 +71,15 @@
     return [UIColor colorWithRed:1.0-red green:1.0-green blue:1.0-blue alpha:alpha];
 }
 
-/**
- *  @inheritDoc
- */
-+ (UIColor *)colorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
-{
++ (UIColor *)colorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha {
     return [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha];
 }
 
-/**
- *  @inheritDoc
- */
-+ (UIColor *)invertedColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
-{
++ (UIColor *)invertedColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha {
     return [UIColor colorWithRed:1.0-(red/255.0) green:1.0-(green/255.0) blue:1.0-(blue/255.0) alpha:alpha];
 }
 
-/**
- *  @inheritDoc
- */
-+ (BOOL)verifyRGBOfColor:(UIColor *)color hasRoomForDeltaUniformValue:(CGFloat)value
-{
++ (BOOL)verifyRGBOfColor:(UIColor *)color hasRoomForDeltaUniformValue:(CGFloat)value {
     CGFloat red, green, blue, alpha;
 
     [color getRed:&red green:&green blue:&blue alpha:&alpha];

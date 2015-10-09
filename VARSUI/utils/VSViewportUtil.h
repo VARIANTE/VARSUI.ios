@@ -1,19 +1,18 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 /**
- *  Enums of all numeral system types.
+ * Enums of all numeral system types.
  */
-typedef NS_ENUM(int, VSViewportAspectRatioType)
-{
+typedef NS_ENUM(int, VSViewportAspectRatioType) {
     VSViewportAspectRatioTypeUnknown = -1,
     VSViewportAspectRatioType5_4,
     VSViewportAspectRatioType4_3,
@@ -23,100 +22,100 @@ typedef NS_ENUM(int, VSViewportAspectRatioType)
 };
 
 /**
- *  Translates VSViewportAspectRatioType to string.
+ * Translates VSViewportAspectRatioType to string.
  *
- *  @param type
+ * @param type
  *
- *  @return NSString equivalent of the specified VSViewportAspectRatioType.
+ * @return NSString equivalent of the specified VSViewportAspectRatioType.
  */
 NSString *NSStringFromVSViewportAspectRatioType(VSViewportAspectRatioType type);
 
-#pragma mark - --------------------------------------------------------------------------
+#pragma mark -
 
 NS_ROOT_CLASS @interface VSViewportUtil
 
 /**
- *  Gets the frame of the viewport at the current interface orientation.
+ * Gets the frame of the viewport at the current interface orientation.
  *
- *  @return CGRect object.
+ * @return CGRect object.
  */
 + (CGRect)frameOfViewport;
 
 /**
- *  Gets the frame of the viewport at the current interface orientation with the option to account for the status bar.
+ * Gets the frame of the viewport at the current interface orientation with the option to account for the status bar.
  *
- *  @param withStatusBar
+ * @param withStatusBar
  *
- *  @return CGRect object.
+ * @return CGRect object.
  */
 + (CGRect)frameOfViewportWithStatusBar:(BOOL)withStatusBar;
 
 /**
- *  Gets the frame of the viewport for the specified interface orientation.
+ * Gets the frame of the viewport for the specified interface orientation.
  *
- *  @param interfaceOrientation
+ * @param interfaceOrientation
  *
- *  @return CGRect object.
+ * @return CGRect object.
  */
 + (CGRect)frameOfViewportForInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
 
 /**
- *  Gets the frame of the viewport for the specified interface orientation with the option to account for the status bar.
+ * Gets the frame of the viewport for the specified interface orientation with the option to account for the status bar.
  *
- *  @param interfaceOrientation
- *  @param withStatusBar
+ * @param interfaceOrientation
+ * @param withStatusBar
  *
- *  @return CGRect object.
+ * @return CGRect object.
  */
 + (CGRect)frameOfViewportForInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation withStatusBar:(BOOL)withStatusBar;
 
 /**
- *  Gets the frame of the status bar for the specified interface orientation.
+ * Gets the frame of the status bar for the specified interface orientation.
  *
- *  @param interfaceOrientation
+ * @param interfaceOrientation
  *
- *  @return CGRect object.
+ * @return CGRect object.
  */
 + (CGRect)frameOfStatusBarForInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
 
 /**
- *  Gets the aspect ratio of the viewport.
+ * Gets the aspect ratio of the viewport.
  *
- *  @return CGFloat value.
+ * @return CGFloat value.
  */
 + (CGFloat)aspectRatioOfViewport;
 
 /**
- *  Gets the aspect ratio of the specified VSViewportAspectRatioType.
+ * Gets the aspect ratio of the specified VSViewportAspectRatioType.
  *
- *  @param type
+ * @param type
  *
- *  @return CGFloat value.
+ * @return CGFloat value.
  */
 + (CGFloat)aspectRatioOfType:(VSViewportAspectRatioType)type;
 
 /**
- *  Gets the current interface orientation of the viewport.
+ * Gets the current interface orientation of the viewport.
  *
- *  @return UIInterfaceOrientation value.
+ * @return UIInterfaceOrientation value.
  */
 + (UIInterfaceOrientation)orientationOfViewport;
 
 /**
- *  Converts a UIInterfaceOrientationMask enum to a UIInterfaceOrientation enum.
+ * Converts a UIInterfaceOrientationMask enum to a UIInterfaceOrientation enum.
  *
- *  @param interfaceOrientationMask
+ * @param interfaceOrientationMask
  *
- *  @return The UIInterfaceOrientation equivalent.
+ * @return The UIInterfaceOrientation equivalent.
  */
 + (UIInterfaceOrientation)interfaceOrientationFromInterfaceOrientationMask:(UIInterfaceOrientationMask)interfaceOrientationMask;
 
 /**
- *  Converts a UIInterfaceOrientation enum to a UIInterfaceOrientationMask enum.
+ * Converts a UIInterfaceOrientation enum to a UIInterfaceOrientationMask enum.
  *
- *  @param interfaceOrientation
+ * @param interfaceOrientation
  *
- *  @return The UIInterfaceOrientationMask equivalent.
+ * @return The UIInterfaceOrientationMask equivalent.
  */
 + (UIInterfaceOrientationMask)interfaceOrientationMaskFromInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
 

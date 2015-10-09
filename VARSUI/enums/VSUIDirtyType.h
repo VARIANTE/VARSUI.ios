@@ -1,23 +1,22 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  Enums for all UI update dirty types. To be used with 
- *  VSUIUpdateDelegate.
+ * Enums for all UI update dirty types. To be used with
+ * VSUIUpdateDelegate.
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <Foundation/Foundation.h>
 
 /**
- *  All dirty invalidation types.
+ * All dirty invalidation types.
  *
- *  @see VSUIViewUpdate
+ * @see VSUIViewUpdate
  */
-typedef NS_ENUM(unsigned int, VSUIDirtyType)
-{
+typedef NS_ENUM(unsigned int, VSUIDirtyType) {
     VSUIDirtyTypeNone        = 0x00000000,
     VSUIDirtyTypeLayout      = 1 << 0,
     VSUIDirtyTypeOrientation = 1 << 1,
@@ -33,10 +32,10 @@ typedef NS_ENUM(unsigned int, VSUIDirtyType)
 };
 
 /**
- *  Translates VSUIDirtyType to string.
+ * Translates VSUIDirtyType to string.
  *
- *  @param type
+ * @param type
  *
- *  @return NSString equivalent of the specified VSUIDirtyType.
+ * @return NSString equivalent of the specified VSUIDirtyType.
  */
 NSString *NSStringFromVSUIDirtyType(VSUIDirtyType type);

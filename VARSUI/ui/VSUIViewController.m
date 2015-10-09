@@ -1,9 +1,9 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>
@@ -14,37 +14,25 @@
 #import "VSUIView.h"
 #import "VSUIViewUpdate.h"
 
-/**
- *  @inheritDoc
- */
-@interface VSUIViewController ()
-{
+@interface VSUIViewController () {
 @private
     NSString *_cachedLocaleIdentifier;
 }
 
 @end
 
-#pragma mark - --------------------------------------------------------------------------
+#pragma mark -
 
 @implementation VSUIViewController
 
-/**
- *  @inheritDoc
- */
 @synthesize model = _model;
 
-#pragma mark - Lifecycle
+#pragma mark Lifecycle
 
-/**
- *  @inheritDoc
- */
-- (id)init
-{
+- (id)init {
     self = [super init];
 
-    if (self)
-    {
+    if (self) {
         [self loadModel];
         [self willInit];
         [self didInit];
@@ -53,11 +41,7 @@
     return self;
 }
 
-/**
- *  @inheritDoc
- */
-- (void)dealloc
-{
+- (void)dealloc {
     [self willDealloc];
 
 #if !__has_feature(objc_arc)
@@ -65,47 +49,27 @@
 #endif
 }
 
-/**
- *  @inheritDoc
- */
-- (void)willInit
-{
+- (void)willInit {
 
 }
 
-/**
- *  @inheritDoc
- */
-- (void)didInit
-{
+- (void)didInit {
 
 }
 
-/**
- *  @inheritDoc
- */
-- (void)willDealloc
-{
+- (void)willDealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
     vs_dealloc(_model);
 }
 
-/**
- *  @inheritDoc
- */
-- (void)loadModel
-{
+- (void)loadModel {
 
 }
 
-#pragma mark - Event Handling
+#pragma mark Event Handling
 
-/**
- *  @inheritDoc
- */
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     _cachedLocaleIdentifier = [NSLocale currentLocale].localeIdentifier;
@@ -116,25 +80,15 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_onViewStyleDidChange:) name:VSUIStyleDidChangeNotification object:nil];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)viewWillLayoutSubviews
-{
-    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)])
-    {
+- (void)viewWillLayoutSubviews {
+    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)]) {
         VSUIViewUpdate *viewUpdateDelegate = ((id<VSUIViewUpdateDelegate>)self.view).updateDelegate;
 
-        if (viewUpdateDelegate.interfaceOrientation != self.interfaceOrientation)
-        {
+        if (viewUpdateDelegate.interfaceOrientation != self.interfaceOrientation) {
             [viewUpdateDelegate setInterfaceOrientation:self.interfaceOrientation];
         }
     }
@@ -142,14 +96,11 @@
     [super viewWillLayoutSubviews];
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)])
-    {
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)]) {
         VSUIViewUpdate *viewUpdateDelegate = ((id<VSUIViewUpdateDelegate>)self.view).updateDelegate;
 
-        if (viewUpdateDelegate.interfaceOrientation != toInterfaceOrientation)
-        {
+        if (viewUpdateDelegate.interfaceOrientation != toInterfaceOrientation) {
             [viewUpdateDelegate setInterfaceOrientation:toInterfaceOrientation];
         }
     }
@@ -157,52 +108,32 @@
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)currentLocaleDidChange:(NSDictionary *)context
-{
-    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)])
-    {
+- (void)currentLocaleDidChange:(NSDictionary *)context {
+    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)]) {
         VSUIViewUpdate *viewUpdateDelegate = ((id<VSUIViewUpdateDelegate>)self.view).updateDelegate;
 
         [viewUpdateDelegate setDirty:VSUIDirtyTypeLocale];
     }
 }
 
-/**
- *  @inheritDoc
- */
-- (void)applicationDidBecomeActive:(NSDictionary *)context
-{
-    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)])
-    {
+- (void)applicationDidBecomeActive:(NSDictionary *)context {
+    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)]) {
         VSUIViewUpdate *viewUpdateDelegate = ((id<VSUIViewUpdateDelegate>)self.view).updateDelegate;
 
         [viewUpdateDelegate setDirty:VSUIDirtyTypeDepth];
     }
 }
 
-/**
- *  @inheritDoc
- */
-- (void)viewConfigDidChange:(NSDictionary *)context
-{
-    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)])
-    {
+- (void)viewConfigDidChange:(NSDictionary *)context {
+    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)]) {
         VSUIViewUpdate *viewUpdateDelegate = ((id<VSUIViewUpdateDelegate>)self.view).updateDelegate;
 
         [viewUpdateDelegate setDirty:VSUIDirtyTypeConfig];
     }
 }
 
-/**
- *  @inheritDoc
- */
-- (void)viewStyleDidChange:(NSDictionary *)context
-{
-    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)])
-    {
+- (void)viewStyleDidChange:(NSDictionary *)context {
+    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)]) {
         VSUIViewUpdate *viewUpdateDelegate = ((id<VSUIViewUpdateDelegate>)self.view).updateDelegate;
 
         [viewUpdateDelegate setDirty:VSUIDirtyTypeStyle];
@@ -210,14 +141,13 @@
 }
 
 /**
- *  @private
+ * @private
  *
- *  NSNotificationCenter selector invoked when NSCurrentLocale did change.
+ * NSNotificationCenter selector invoked when NSCurrentLocale did change.
  *
- *  @param note
+ * @param note
  */
-- (void)_onCurrentLocaleDidChange:(NSNotification *)note
-{
+- (void)_onCurrentLocaleDidChange:(NSNotification *)note {
     NSString *oldLocaleIdentifier = _cachedLocaleIdentifier;
     NSString *newLocaleIdentifier = [NSLocale currentLocale].localeIdentifier;
     NSDictionary *context = @{ @"oldLocaleIdentifier": oldLocaleIdentifier, @"newLocaleIdentifier": newLocaleIdentifier };
@@ -228,38 +158,35 @@
 }
 
 /**
- *  @private
+ * @private
  *
- *  NSNotificationCenter selector invoked when application did become active.
+ * NSNotificationCenter selector invoked when application did become active.
  *
- *  @param note
+ * @param note
  */
-- (void)_onApplicationDidBecomeActive:(NSNotification *)note
-{
+- (void)_onApplicationDidBecomeActive:(NSNotification *)note {
     [self applicationDidBecomeActive:note.userInfo];
 }
 
 /**
- *  @private
+ * @private
  *
- *  NSNotificationCenter selector invoked when UI config did change.
+ * NSNotificationCenter selector invoked when UI config did change.
  *
- *  @param note
+ * @param note
  */
-- (void)_onViewConfigDidChange:(NSNotification *)note
-{
+- (void)_onViewConfigDidChange:(NSNotification *)note {
     [self viewConfigDidChange:note.userInfo];
 }
 
 /**
- *  @private
+ * @private
  *
- *  NSNotificationCenter selector invoked when UI style did change.
+ * NSNotificationCenter selector invoked when UI style did change.
  *
- *  @param note
+ * @param note
  */
-- (void)_onViewStyleDidChange:(NSNotification *)note
-{
+- (void)_onViewStyleDidChange:(NSNotification *)note {
     [self viewStyleDidChange:note.userInfo];
 }
 

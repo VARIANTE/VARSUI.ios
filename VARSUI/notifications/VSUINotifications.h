@@ -1,11 +1,11 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  VARS custom NSNotificationCenter notifications.
+ * VARS custom NSNotificationCenter notifications.
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #ifndef Calculator_GZUINotifications_h

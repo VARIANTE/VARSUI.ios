@@ -1,9 +1,9 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>
@@ -13,44 +13,36 @@
 #import "VSUIUtil.h"
 
 /**
- *  Default UUID of this VSUIButton instance.
+ * Default UUID of this VSUIButton instance.
  */
 static const int DEFAULT_UUID = -1;
 
-#pragma mark - --------------------------------------------------------------------------
+#pragma mark -
 
-@interface VSUIButton()
-{
+@interface VSUIButton() {
 @private
     VSUIViewUpdate *_updateDelegate;
     NSMutableDictionary *_backgroundColorTable;
 }
 
-#pragma mark - Private Accessors
+#pragma mark Private Accessors
 
-/**
- *  @inheritDoc
- */
 @property (nonatomic) int UUID;
 
 @end
 
-#pragma mark - --------------------------------------------------------------------------
+#pragma mark -
 
-/**
- *  @inheritDoc
- */
 @implementation VSUIButton
 
-#pragma mark - VSUIViewUpdateDelegate
+#pragma mark VSUIViewUpdateDelegate
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
 @dynamic updateDelegate;
 
-- (VSUIViewUpdate *)updateDelegate
-{
+- (VSUIViewUpdate *)updateDelegate {
     if (_updateDelegate != nil) return _updateDelegate;
 
     _updateDelegate = [[VSUIViewUpdate alloc] init];
@@ -60,50 +52,41 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
 @dynamic interfaceOrientation;
 
-- (UIInterfaceOrientation)interfaceOrientation
-{
+- (UIInterfaceOrientation)interfaceOrientation {
     return [self.updateDelegate interfaceOrientation];
 }
 
-- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     [self.updateDelegate setInterfaceOrientation:interfaceOrientation];
 }
 
-#pragma mark - States
+#pragma mark States
 
 /**
- *  @inheritDoc UIControl
+ * @inheritDoc UIControl
  */
-- (void)setHighlighted:(BOOL)highlighted
-{
+- (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
 
     [self.updateDelegate setDirty:VSUIDirtyTypeState];
 }
 
 /**
- *  @inheritDoc UIControl
+ * @inheritDoc UIControl
  */
-- (void)setSelected:(BOOL)selected
-{
+- (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     [self.updateDelegate setDirty:VSUIDirtyTypeState];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)setEnabled:(BOOL)enabled
-{
+- (void)setEnabled:(BOOL)enabled {
     [super setEnabled:enabled];
 
-    if (!enabled)
-    {
+    if (!enabled) {
         [self setHighlighted:NO];
     }
 
@@ -111,62 +94,50 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- *  @inheritDoc UIView
+ * @inheritDoc UIView
  */
-- (void)setHidden:(BOOL)hidden
-{
-    if (self.shouldAnimateVisibility)
-    {
+- (void)setHidden:(BOOL)hidden {
+    if (self.shouldAnimateVisibility) {
         [VSUIButton transitionWithView:self duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
             [super setHidden:hidden];
         } completion:NULL];
     }
-    else
-    {
+    else {
         [super setHidden:hidden];
     }
 }
 
-#pragma mark - Identifiers
+#pragma mark Identifiers
 
-/**
- *  @inheritDoc
- */
 @synthesize UUID = _uuid;
 
-#pragma mark - Styles
+#pragma mark Styles
 
 /**
- *  @inheritDoc UIView
+ * @inheritDoc UIView
  */
-- (void)setBackgroundColor:(UIColor *)backgroundColor
-{
-    if (self.shouldAnimateBackgroundColor)
-    {
-        if (((self.state & UIControlStateHighlighted) != 0) || ((self.state & UIControlStateSelected) != 0))
-        {
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    if (self.shouldAnimateBackgroundColor) {
+        if (((self.state & UIControlStateHighlighted) != 0) || ((self.state & UIControlStateSelected) != 0)) {
             [VSUIButton animateWithDuration:0.0 delay:0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState animations:^{
                 [super setBackgroundColor:backgroundColor];
             } completion:NULL];
         }
-        else
-        {
+        else {
             [VSUIButton animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState animations:^{
                 [super setBackgroundColor:backgroundColor];
             } completion:NULL];
         }
     }
-    else
-    {
+    else {
         [super setBackgroundColor:backgroundColor];
     }
 }
 
 /**
- *  @inheritDoc UIButton
+ * @inheritDoc UIButton
  */
-- (void)setAttributedTitle:(NSAttributedString *)title forState:(UIControlState)state
-{
+- (void)setAttributedTitle:(NSAttributedString *)title forState:(UIControlState)state {
     NSRange range = NSMakeRange(0, title.string.length);
     NSMutableAttributedString *mas = [[NSMutableAttributedString alloc] initWithAttributedString:title];
     [mas removeAttribute:NSForegroundColorAttributeName range:range];
@@ -176,90 +147,56 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- *  @inheritDoc UIButton
+ * @inheritDoc UIButton
  */
-- (void)setTitleColor:(UIColor *)color forState:(UIControlState)state
-{
+- (void)setTitleColor:(UIColor *)color forState:(UIControlState)state {
     [super setTitleColor:color forState:state];
 
     NSAttributedString *as = [self attributedTitleForState:state];
 
-    if (as != nil)
-    {
+    if (as != nil) {
         [self setAttributedTitle:as forState:state];
     }
 }
 
-/**
- *  @inheritDoc
- */
-- (UIFont *)titleFont
-{
+- (UIFont *)titleFont {
     return self.titleLabel.font;
 }
 
-/**
- *  @inheritDoc
- */
-- (void)setTitleFont:(UIFont *)titleFont
-{
+- (void)setTitleFont:(UIFont *)titleFont {
     [self.titleLabel setFont:titleFont];
 }
 
-#pragma mark - Behaviors
+#pragma mark Behaviors
 
-/**
- *  @inheritDoc
- */
 @synthesize shouldDimWhenHighlighted = _shouldDimWhenHighlighted;
 
-/**
- *  @inheritDoc
- */
 @synthesize shouldDimWhenSelected = _shouldDimWhenSelected;
 
-/**
- *  @inheritDoc
- */
 @synthesize shouldDimWhenDisabled = _shouldDimWhenDisabled;
 
-/**
- *  @inheritDoc
- */
 @synthesize shouldAnimateBackgroundColor = _shouldAnimateBackgroundColor;
 
-/**
- *  @inheritDoc
- */
 @synthesize shouldAnimateVisibility = _shouldAnimateVisibility;
 
-/**
- *  @inheritDoc
- */
 @synthesize shouldOverrideAccessibilityOption = _shouldOverrideAccessibilityOption;
 
-/**
- *  @inheritDoc
- */
 @synthesize shouldRedirectTouchesToNextResponder = _shouldRedirectTouchesToNextResponder;
 
-#pragma mark - VSUIViewUpdateDelegate
+#pragma mark VSUIViewUpdateDelegate
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (void)setNeedsUpdate
-{
+- (void)setNeedsUpdate {
     [self update];
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (void)update
-{
-    if ([self isDirty:VSUIDirtyTypeStyle|VSUIDirtyTypeState])
-    {
+- (void)update {
+    if ([self isDirty:VSUIDirtyTypeStyle|VSUIDirtyTypeState]) {
         [self _updateState];
     }
 
@@ -267,24 +204,21 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (BOOL)isDirty:(VSUIDirtyType)dirtyType
-{
+- (BOOL)isDirty:(VSUIDirtyType)dirtyType {
     return [self.updateDelegate isDirty:dirtyType];
 }
 
-#pragma mark - Lifecycle
+#pragma mark Lifecycle
 
 /**
- *  @inheritDoc UIView
+ * @inheritDoc UIView
  */
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
 
-    if (self)
-    {
+    if (self) {
         [self setUUID:DEFAULT_UUID];
         [self willInit];
         [self didInit];
@@ -293,15 +227,10 @@ static const int DEFAULT_UUID = -1;
     return self;
 }
 
-/**
- *  @inheritDoc
- */
-- (id)initWithFrame:(CGRect)frame UUID:(int)UUID
-{
+- (id)initWithFrame:(CGRect)frame UUID:(int)UUID {
     self = [super initWithFrame:frame];
 
-    if (self)
-    {
+    if (self) {
         [self setUUID:UUID];
         [self willInit];
         [self didInit];
@@ -310,21 +239,16 @@ static const int DEFAULT_UUID = -1;
     return self;
 }
 
-/**
- *  @inheritDoc
- */
-- (id)initWithUUID:(int)UUID
-{
+- (id)initWithUUID:(int)UUID {
     self = [self initWithFrame:CGRectZero UUID:UUID];
 
     return self;
 }
 
 /**
- *  @inheritDoc NSObject
+ * @inheritDoc NSObject
  */
-- (void)dealloc
-{
+- (void)dealloc {
     [self willDealloc];
 
 #if !__has_feature(objc_arc)
@@ -332,11 +256,7 @@ static const int DEFAULT_UUID = -1;
 #endif
 }
 
-/**
- *  @inheritDoc
- */
-- (void)willInit
-{
+- (void)willInit {
     [self setShouldDimWhenHighlighted:NO];
     [self setShouldDimWhenSelected:NO];
     [self setShouldDimWhenDisabled:NO];
@@ -348,14 +268,9 @@ static const int DEFAULT_UUID = -1;
     _backgroundColorTable = [[NSMutableDictionary alloc] init];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)didInit
-{
+- (void)didInit {
     // HACK: Set transparent 1x1 image background so accessibility underlines won't appear.
-    if (self.shouldOverrideAccessibilityOption)
-    {
+    if (self.shouldOverrideAccessibilityOption) {
         UIImage *image = [VSUIUtil imageWithColor:[UIColor clearColor] size:CGSizeMake(1.0f, 1.0f)];
         [self setBackgroundImage:image forState:UIControlStateNormal];
         [self setBackgroundImage:image forState:UIControlStateHighlighted];
@@ -366,116 +281,89 @@ static const int DEFAULT_UUID = -1;
     [self.updateDelegate viewDidInit];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)willDealloc
-{
+- (void)willDealloc {
     vs_dealloc(_updateDelegate);
     vs_dealloc(_backgroundColorTable);
 }
 
-#pragma mark - Drawing
+#pragma mark Drawing
 
-/**
- *  @inheritDoc
- */
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 
     [self.updateDelegate setDirty:VSUIDirtyTypeLayout];
 }
 
-#pragma mark - Updating
+#pragma mark Updating
 
 /**
- *  @private
+ * @private
  *
- *  Applies state-specific update.
+ * Applies state-specific update.
  */
-- (void)_updateState
-{
+- (void)_updateState {
     [self setBackgroundColor:[self _getBackgroundColorForState:self.state]];
 }
 
-#pragma mark - Event Handling
+#pragma mark Event Handling
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesBegan:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesBegan:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesMoved:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesMoved:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesEnded:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesEnded:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesCancelled:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesCancelled:touches withEvent:event];
     }
 }
 
-#pragma mark - Styling
+#pragma mark Styling
 
-/**
- *  @inheritDoc
- */
-- (void)setBackgroundColor:(UIColor *)backgroundColor forState:(UIControlState)state
-{
+- (void)setBackgroundColor:(UIColor *)backgroundColor forState:(UIControlState)state {
     NSNumber *key = @(state);
 
-    if (backgroundColor == nil)
-    {
+    if (backgroundColor == nil) {
         [_backgroundColorTable removeObjectForKey:key];
     }
-    else
-    {
+    else {
         [_backgroundColorTable setObject:backgroundColor forKey:key];
     }
 
@@ -483,98 +371,79 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- *  @private
+ * @private
  *
- *  Gets the background color for the specified UIControlState.
+ * Gets the background color for the specified UIControlState.
  *
- *  @param state
+ * @param state
  *
- *  @return The corresponding background color if specified; the normal background color if
- *          unspecified; nil if even the normal background is unspecified.
+ * @return The corresponding background color if specified; the normal background color if
+ *         unspecified; nil if even the normal background is unspecified.
  */
-- (UIColor *)_getBackgroundColorForState:(UIControlState)state
-{
+- (UIColor *)_getBackgroundColorForState:(UIControlState)state {
     NSNumber *key = @(state);
 
     UIColor *targetColor = (UIColor *)[_backgroundColorTable objectForKey:key];
 
     // Determine fallback color.
-    if (!targetColor)
-    {
-        switch (state)
-        {
-            case UIControlStateNormal:
-            {
+    if (!targetColor) {
+        switch (state) {
+            case UIControlStateNormal: {
                 return self.backgroundColor;
             }
 
-            case UIControlStateHighlighted:
-            {
+            case UIControlStateHighlighted: {
                 UIColor *fallbackColor = [self _getBackgroundColorForState:UIControlStateNormal];
 
-                if (self.shouldDimWhenHighlighted)
-                {
+                if (self.shouldDimWhenHighlighted) {
                     CGFloat delta = [VSColorUtil verifyRGBOfColor:fallbackColor hasRoomForDeltaUniformValue:-20.0f] ? -20.0f : 20.0f;
                     return [VSColorUtil modifyRGBOfColor:fallbackColor byUniformValue:delta];
                 }
-                else
-                {
+                else {
                     return fallbackColor;
                 }
             }
 
-            case UIControlStateSelected:
-            {
+            case UIControlStateSelected: {
                 UIColor *fallbackColor = [self _getBackgroundColorForState:UIControlStateNormal];
 
-                if (self.shouldDimWhenSelected)
-                {
+                if (self.shouldDimWhenSelected) {
                     CGFloat delta = [VSColorUtil verifyRGBOfColor:fallbackColor hasRoomForDeltaUniformValue:-20.0f] ? -20.0f : 20.0f;
                     return [VSColorUtil modifyRGBOfColor:fallbackColor byUniformValue:delta];
                 }
-                else
-                {
+                else {
                     return fallbackColor;
                 }
             }
 
-            case UIControlStateDisabled:
-            {
+            case UIControlStateDisabled: {
                 UIColor *fallbackColor = [self _getBackgroundColorForState:UIControlStateNormal];
 
-                if (self.shouldDimWhenDisabled)
-                {
+                if (self.shouldDimWhenDisabled) {
                     return [fallbackColor colorWithAlphaComponent:0.2f];
                 }
-                else
-                {
+                else {
                     return fallbackColor;
                 }
             }
 
-            default:
-            {
-                if ((state & UIControlStateDisabled) != 0)
-                {
+            default: {
+                if ((state & UIControlStateDisabled) != 0) {
                     return [self _getBackgroundColorForState:UIControlStateDisabled];
                 }
-                else if ((state & UIControlStateSelected) != 0)
-                {
+                else if ((state & UIControlStateSelected) != 0) {
                     return [self _getBackgroundColorForState:UIControlStateSelected];
                 }
-                else if ((state & UIControlStateHighlighted) != 0)
-                {
+                else if ((state & UIControlStateHighlighted) != 0) {
                     return [self _getBackgroundColorForState:UIControlStateHighlighted];
                 }
-                else
-                {
+                else {
                     return [self _getBackgroundColorForState:UIControlStateNormal];
                 }
             }
         }
     }
-    else
-    {
+    else {
         return targetColor;
     }
 

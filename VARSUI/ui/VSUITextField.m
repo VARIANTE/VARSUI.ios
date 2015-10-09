@@ -1,9 +1,9 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>
@@ -11,40 +11,35 @@
 #import "VSUITextField.h"
 
 /**
- *  Default UUID.
+ * Default UUID.
  */
 static const int DEFAULT_UUID = -1;
 
-#pragma mark - --------------------------------------------------------------------------
+#pragma mark -
 
-@interface VSUITextField()
-{
+@interface VSUITextField() {
 @private
     VSUIViewUpdate *_updateDelegate;
 }
 
-#pragma mark - Private Accessors.
+#pragma mark Private Accessors.
 
-/**
- *  @inheritDoc
- */
 @property (nonatomic) int UUID;
 
 @end
 
-#pragma mark - --------------------------------------------------------------------------
+#pragma mark -
 
 @implementation VSUITextField
 
-#pragma mark - VSUIViewUpdateDelegate
+#pragma mark VSUIViewUpdateDelegate
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
 @dynamic updateDelegate;
 
-- (VSUIViewUpdate *)updateDelegate
-{
+- (VSUIViewUpdate *)updateDelegate {
     if (_updateDelegate != nil) return _updateDelegate;
 
     _updateDelegate = [[VSUIViewUpdate alloc] init];
@@ -54,54 +49,43 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
 @dynamic interfaceOrientation;
 
-- (UIInterfaceOrientation)interfaceOrientation
-{
+- (UIInterfaceOrientation)interfaceOrientation {
     return [self.updateDelegate interfaceOrientation];
 }
 
-- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     [self.updateDelegate setInterfaceOrientation:interfaceOrientation];
 }
 
-#pragma mark - Identifiers
+#pragma mark Identifiers
 
-/**
- *  @inheritDoc
- */
 @synthesize UUID = _uUID;
 
-#pragma mark - Data
+#pragma mark Data
 
 /**
- *  @inheritDoc UITextField
+ * @inheritDoc UITextField
  */
-- (void)setAttributedText:(NSAttributedString *)attributedText
-{
+- (void)setAttributedText:(NSAttributedString *)attributedText {
     [super setAttributedText:attributedText];
 
     [self.updateDelegate setDirty:VSUIDirtyTypeData];
 }
 
 /**
- *  @inheritDoc UITextField
+ * @inheritDoc UITextField
  */
-- (void)setText:(NSString *)text
-{
+- (void)setText:(NSString *)text {
     [super setText:text];
 
     [self.updateDelegate setDirty:VSUIDirtyTypeData];
 }
 
-/**
- *  @inheritDoc
- */
-- (NSRange)selectedRange
-{
+- (NSRange)selectedRange {
     UITextPosition *beginning = self.beginningOfDocument;
     UITextRange *selectedRange = self.selectedTextRange;
     UITextPosition *selectionStart = selectedRange.start;
@@ -113,8 +97,7 @@ static const int DEFAULT_UUID = -1;
     return NSMakeRange(location, length);
 }
 
-- (void)setSelectedRange:(NSRange)range
-{
+- (void)setSelectedRange:(NSRange)range {
     UITextPosition *beginning = self.beginningOfDocument;
     UITextPosition *startPosition = [self positionFromPosition:beginning offset:range.location];
     UITextPosition *endPosition = [self positionFromPosition:beginning offset:range.location + range.length];
@@ -123,26 +106,18 @@ static const int DEFAULT_UUID = -1;
     [self setSelectedTextRange:selectionRange];
 }
 
-#pragma mark - Behaviors
+#pragma mark Behaviors
 
-/**
- *  @inheritDoc
- */
 @synthesize shouldRedirectTouchesToNextResponder = _shouldRedirectTouchesToNextResponder;
 
-#pragma mark - Styles
+#pragma mark Styles
 
-/**
- *  @inheritDoc
- */
 @synthesize shouldHideKeyboard = _shouldHideKeyboard;
 
-- (void)setShouldHideKeyboard:(BOOL)shouldHideKeyboard
-{
+- (void)setShouldHideKeyboard:(BOOL)shouldHideKeyboard {
     _shouldHideKeyboard = shouldHideKeyboard;
 
-    if (shouldHideKeyboard)
-    {
+    if (shouldHideKeyboard) {
         UIView *dummyKeyboard = [[UIView alloc] initWithFrame:CGRectZero];
         [self setInputView:dummyKeyboard];
         vs_dealloc(dummyKeyboard);
@@ -153,43 +128,38 @@ static const int DEFAULT_UUID = -1;
     }
 }
 
-#pragma mark - VSUIViewUpdateDelegate
+#pragma mark VSUIViewUpdateDelegate
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (void)setNeedsUpdate
-{
+- (void)setNeedsUpdate {
     [self update];
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (void)update
-{
+- (void)update {
     [self.updateDelegate viewDidUpdate];
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (BOOL)isDirty:(VSUIDirtyType)dirtyType
-{
+- (BOOL)isDirty:(VSUIDirtyType)dirtyType {
     return [self.updateDelegate isDirty:dirtyType];
 }
 
-#pragma mark - Lifecycle
+#pragma mark Lifecycle
 
 /**
- *  @inheritDoc UIView
+ * @inheritDoc UIView
  */
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
 
-    if (self)
-    {
+    if (self) {
         [self setUUID:DEFAULT_UUID];
         [self willInit];
         [self didInit];
@@ -198,15 +168,10 @@ static const int DEFAULT_UUID = -1;
     return self;
 }
 
-/**
- *  @inheritDoc
- */
-- (id)initWithFrame:(CGRect)frame UUID:(int)UUID
-{
+- (id)initWithFrame:(CGRect)frame UUID:(int)UUID {
     self = [super initWithFrame:frame];
 
-    if (self)
-    {
+    if (self) {
         [self setUUID:UUID];
         [self willInit];
         [self didInit];
@@ -215,21 +180,16 @@ static const int DEFAULT_UUID = -1;
     return self;
 }
 
-/**
- *  @inheritDoc
- */
-- (id)initWithUUID:(int)UUID
-{
+- (id)initWithUUID:(int)UUID {
     self = [self initWithFrame:CGRectZero UUID:UUID];
 
     return self;
 }
 
 /**
- *  @inheritDoc NSObject
+ * @inheritDoc NSObject
  */
-- (void)dealloc
-{
+- (void)dealloc {
     [self willDealloc];
 
 #if !__has_feature(objc_arc)
@@ -237,100 +197,72 @@ static const int DEFAULT_UUID = -1;
 #endif
 }
 
-/**
- *  @inheritDoc
- */
-- (void)willInit
-{
+- (void)willInit {
     [self setShouldRedirectTouchesToNextResponder:NO];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)didInit
-{
+- (void)didInit {
     [self.updateDelegate viewDidInit];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)willDealloc
-{
+- (void)willDealloc {
     vs_dealloc(_updateDelegate);
 }
 
-#pragma mark - Drawing
+#pragma mark Drawing
 
-/**
- *  @inheritDoc
- */
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 
     [self.updateDelegate setDirty:VSUIDirtyTypeLayout];
 }
 
-#pragma mark - Event Handling
+#pragma mark Event Handling
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesBegan:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesBegan:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesMoved:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesMoved:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesEnded:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesEnded:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesCancelled:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesCancelled:touches withEvent:event];
     }
 }

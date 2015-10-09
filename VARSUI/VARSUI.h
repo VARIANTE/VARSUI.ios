@@ -1,9 +1,9 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <UIKit/UIKit.h>
@@ -13,8 +13,6 @@ FOUNDATION_EXPORT double VARSUIVersionNumber;
 
 //! Project version string for VARSUI.
 FOUNDATION_EXPORT const unsigned char VARSUIVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <VARSUI/PublicHeader.h>
 
 #import "VARSUI/VSUIDirtyType.h"
 #import "VARSUI/VSUINotifications.h"

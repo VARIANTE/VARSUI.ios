@@ -1,20 +1,16 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #import "VSQuartzUtil.h"
 
 @implementation VSQuartzUtil
 
-/**
- *  @inheritDoc
- */
-+ (void)setAnchorPoint:(CGPoint)anchorPoint forView:(UIView *)view
-{
++ (void)setAnchorPoint:(CGPoint)anchorPoint forView:(UIView *)view {
     CGPoint newPoint = CGPointMake(view.bounds.size.width * anchorPoint.x, view.bounds.size.height * anchorPoint.y);
     CGPoint oldPoint = CGPointMake(view.bounds.size.width * view.layer.anchorPoint.x, view.bounds.size.height * view.layer.anchorPoint.y);
 
@@ -33,13 +29,8 @@
     view.layer.anchorPoint = anchorPoint;
 }
 
-/**
- *  @inheritDoc
- */
-+ (CAShapeLayer *)linearCAShapeLayerFromPoint:(CGPoint)pointA toPoint:(CGPoint)pointB color:(UIColor *)color thickness:(CGFloat)thickness opacity:(float)opacity
-{
-    @autoreleasepool
-    {
++ (CAShapeLayer *)linearCAShapeLayerFromPoint:(CGPoint)pointA toPoint:(CGPoint)pointB color:(UIColor *)color thickness:(CGFloat)thickness opacity:(float)opacity {
+    @autoreleasepool {
         UIBezierPath *path = [UIBezierPath bezierPath];
         [path moveToPoint:pointA];
         [path addLineToPoint:pointB];
@@ -57,13 +48,8 @@
     }
 }
 
-/**
- *  @inheritDoc
- */
-+ (CAShapeLayer *)linearCAShapeLayerWithPoints:(NSArray *)points color:(UIColor *)color thickness:(CGFloat)thickness opacity:(float)opacity
-{
-    @autoreleasepool
-    {
++ (CAShapeLayer *)linearCAShapeLayerWithPoints:(NSArray *)points color:(UIColor *)color thickness:(CGFloat)thickness opacity:(float)opacity {
+    @autoreleasepool {
         // Minimum 2 points required.
         if (points == nil || points.count < 2) return nil;
 
@@ -75,32 +61,25 @@
         UIBezierPath *path = [UIBezierPath bezierPath];
         BOOL isContinuous = NO;
 
-        for (int i = 0; i < arrlen; i++)
-        {
+        for (int i = 0; i < arrlen; i++) {
             id entry = points[i];
 
-            if (entry == nil || ![entry isKindOfClass:[NSValue class]] || (strcmp([entry objCType], @encode(CGPoint)) != 0))
-            {
+            if (entry == nil || ![entry isKindOfClass:[NSValue class]] || (strcmp([entry objCType], @encode(CGPoint)) != 0)) {
                 isContinuous = NO;
                 continue;
             }
-            else
-            {
+            else {
                 CGPoint point = [(NSValue *)entry CGPointValue];
 
-                if (isnan(point.x) || isnan(point.y))
-                {
+                if (isnan(point.x) || isnan(point.y)) {
                     isContinuous = NO;
                     continue;
                 }
-                else
-                {
-                    if (isContinuous)
-                    {
+                else {
+                    if (isContinuous) {
                         [path addLineToPoint:point];
                     }
-                    else
-                    {
+                    else {
                         [path moveToPoint:point];
                     }
 
@@ -122,13 +101,8 @@
     }
 }
 
-/**
- *  @inheritDoc
- */
-+ (CAShapeLayer *)circularCAShapeLayerWithRadius:(CGFloat)radius color:(UIColor *)color position:(CGPoint)position
-{
-    @autoreleasepool
-    {
++ (CAShapeLayer *)circularCAShapeLayerWithRadius:(CGFloat)radius color:(UIColor *)color position:(CGPoint)position {
+    @autoreleasepool {
         UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:position radius:radius startAngle:0.0 endAngle:M_PI*2.0 clockwise:YES];
 
         CAShapeLayer *shapeLayer = [CAShapeLayer layer];
@@ -142,13 +116,8 @@
     }
 }
 
-/**
- *  @inheritDoc
- */
-+ (CATextLayer *)CATextLayerWithText:(NSString *)text font:(UIFont *)font foregroundColor:(UIColor *)foregroundColor backgroundColor:(UIColor *)backgroundColor bounds:(CGRect)bounds position:(CGPoint)position alignment:(NSString *)alignment
-{
-    @autoreleasepool
-    {
++ (CATextLayer *)CATextLayerWithText:(NSString *)text font:(UIFont *)font foregroundColor:(UIColor *)foregroundColor backgroundColor:(UIColor *)backgroundColor bounds:(CGRect)bounds position:(CGPoint)position alignment:(NSString *)alignment {
+    @autoreleasepool {
         CATextLayer *textLayer = [CATextLayer layer];
         [textLayer setBounds:bounds];
         [textLayer setString:text];

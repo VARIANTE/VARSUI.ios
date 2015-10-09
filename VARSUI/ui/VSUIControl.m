@@ -1,36 +1,34 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>
 
 #import "VSUIControl.h"
 
-@interface VSUIControl()
-{
+@interface VSUIControl() {
 @private
     VSUIViewUpdate *_updateDelegate;
 }
 
 @end
 
-#pragma mark - --------------------------------------------------------------------------
+#pragma mark -
 
 @implementation VSUIControl
 
-#pragma mark - VSUIViewUpdateDelegate
+#pragma mark VSUIViewUpdateDelegate
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
 @dynamic updateDelegate;
 
-- (VSUIViewUpdate *)updateDelegate
-{
+- (VSUIViewUpdate *)updateDelegate {
     if (_updateDelegate != nil) return _updateDelegate;
 
     _updateDelegate = [[VSUIViewUpdate alloc] init];
@@ -40,64 +38,54 @@
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
 @dynamic interfaceOrientation;
 
-- (UIInterfaceOrientation)interfaceOrientation
-{
+- (UIInterfaceOrientation)interfaceOrientation {
     return [self.updateDelegate interfaceOrientation];
 }
 
-- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     [self.updateDelegate setInterfaceOrientation:interfaceOrientation];
 }
 
-#pragma mark - Behaviors
+#pragma mark Behaviors
 
-/**
- *  @inheritDoc
- */
 @synthesize shouldRedirectTouchesToNextResponder = _shouldRedirectTouchesToNextResponder;
 
-#pragma mark - VSUIViewUpdateDelegate
+#pragma mark VSUIViewUpdateDelegate
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (void)setNeedsUpdate
-{
+- (void)setNeedsUpdate {
     [self update];
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (void)update
-{
+- (void)update {
     [self.updateDelegate viewDidUpdate];
 }
 
 /**
- *  @inheritDoc VSUIViewUpdateDelegate
+ * @inheritDoc VSUIViewUpdateDelegate
  */
-- (BOOL)isDirty:(VSUIDirtyType)dirtyType
-{
+- (BOOL)isDirty:(VSUIDirtyType)dirtyType {
     return [self.updateDelegate isDirty:dirtyType];
 }
 
-#pragma mark - Lifecycle
+#pragma mark Lifecycle
 
 /**
- *  @inheritDoc UIView
+ * @inheritDoc UIView
  */
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
 
-    if (self)
-    {
+    if (self) {
         [self willInit];
         [self didInit];
     }
@@ -106,10 +94,9 @@
 }
 
 /**
- *  @inheritDoc NSObject
+ * @inheritDoc NSObject
  */
-- (void)dealloc
-{
+- (void)dealloc {
     [self willDealloc];
 
 #if !__has_feature(objc_arc)
@@ -117,100 +104,72 @@
 #endif
 }
 
-/**
- *  @inheritDoc
- */
-- (void)willInit
-{
+- (void)willInit {
     [self setShouldRedirectTouchesToNextResponder:NO];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)didInit
-{
+- (void)didInit {
     [self.updateDelegate viewDidInit];
 }
 
-/**
- *  @inheritDoc
- */
-- (void)willDealloc
-{
+- (void)willDealloc {
     vs_dealloc(_updateDelegate);
 }
 
-#pragma mark - Drawing
+#pragma mark Drawing
 
-/**
- *  @inheritDoc
- */
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 
     [self.updateDelegate setDirty:VSUIDirtyTypeLayout];
 }
 
-#pragma mark - Event Handling
+#pragma mark Event Handling
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesBegan:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesBegan:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesMoved:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesMoved:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesEnded:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesEnded:touches withEvent:event];
     }
 }
 
 /**
- *  @inheritDoc UIResponder
+ * @inheritDoc UIResponder
  */
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.shouldRedirectTouchesToNextResponder)
-    {
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.shouldRedirectTouchesToNextResponder) {
         [self.nextResponder touchesCancelled:touches withEvent:event];
     }
-    else
-    {
+    else {
         [super touchesCancelled:touches withEvent:event];
     }
 }

@@ -1,11 +1,11 @@
 /**
- *  VARSUI
- *  (c) VARIANTE <http://variante.io>
+ * VARSUI
+ * (c) VARIANTE <http://variante.io>
  *
- *  Utility for UI manipulation, containing various helper methods.
+ * Utility for UI manipulation, containing various helper methods.
  *
- *  This software is released under the MIT License:
- *  http://www.opensource.org/licenses/mit-license.php
+ * This software is released under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>
@@ -14,11 +14,7 @@
 
 @implementation VSUIUtil
 
-/**
- *  @inheritDoc
- */
-+ (CGFloat)heightOfTextViewWithText:(NSString *)text font:(UIFont *)font width:(CGFloat)width
-{
++ (CGFloat)heightOfTextViewWithText:(NSString *)text font:(UIFont *)font width:(CGFloat)width {
     UITextView *textView = [[UITextView alloc] init];
     [textView setFont:font];
     [textView setText:text];
@@ -30,11 +26,7 @@
     return size.height;
 }
 
-/**
- *  @inheritDoc
- */
-+ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
-{
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
     CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
