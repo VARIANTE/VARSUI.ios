@@ -29,7 +29,7 @@ NSString *NSStringFromVSViewportAspectRatioType(VSViewportAspectRatioType type) 
 }
 
 + (CGRect)frameOfViewportWithStatusBar:(BOOL)withStatusBar {
-    UIInterfaceOrientation orientation = [VSViewportUtil orientationOfViewport];
+    UIInterfaceOrientation orientation = [VSViewportUtil interfaceOrientationOfViewport];
 
     return [VSViewportUtil frameOfViewportForInterfaceOrientation:orientation withStatusBar:withStatusBar];
 }
@@ -94,8 +94,17 @@ NSString *NSStringFromVSViewportAspectRatioType(VSViewportAspectRatioType type) 
     }
 }
 
-+ (UIInterfaceOrientation)orientationOfViewport {
++ (UIInterfaceOrientation)interfaceOrientationOfViewport {
     return [[UIApplication sharedApplication] statusBarOrientation];
+}
+
++ (UIInterfaceOrientation)interfaceOrientationOfRect:(CGRect)rect {
+    if (rect.size.width > rect.size.height) {
+        return [VSViewportUtil interfaceOrientationFromInterfaceOrientationMask:UIInterfaceOrientationMaskLandscape];
+    }
+    else {
+        return [VSViewportUtil interfaceOrientationFromInterfaceOrientationMask:UIInterfaceOrientationMaskPortrait];
+    }
 }
 
 + (UIInterfaceOrientation)interfaceOrientationFromInterfaceOrientationMask:(UIInterfaceOrientationMask)interfaceOrientationMask {

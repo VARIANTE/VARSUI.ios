@@ -145,7 +145,7 @@
 
         [self setShouldAutomaticallyForwardUpdateMethods:VSUIDirtyTypeNone];
         [self setShouldAutomaticallyBlockForwardedUpdateMethods:VSUIDirtyTypeNone];
-        [self setInterfaceOrientation:[VSViewportUtil orientationOfViewport]];
+        [self setInterfaceOrientation:[VSViewportUtil interfaceOrientationOfViewport]];
 
         self.dirtyTable = VSUIDirtyTypeNone;
         self.pendingUpdate = NO;
@@ -262,6 +262,10 @@
 
 - (void)setDirtyObject:(NSNumber *)dirtyObject willUpdateImmediately:(BOOL)willUpdateImmediately {
     [self setDirty:(VSUIDirtyType)dirtyObject.intValue willUpdateImmediately:willUpdateImmediately];
+}
+
+- (VSUIDirtyType)getDirty {
+    return self.dirtyTable;
 }
 
 - (void)mapKeyPath:(NSString *)keyPath toDirtyType:(VSUIDirtyType)dirtyType {

@@ -155,6 +155,13 @@
 - (void)setDirtyObject:(NSNumber *)dirtyObject willUpdateImmediately:(BOOL)willUpdateImmediately;
 
 /**
+ * Gets an unsigned int representing the current dirty types.
+ *
+ * @return VSUIDirtyType value.
+ */
+- (VSUIDirtyType)getDirty;
+
+/**
  * Maps a property key path of the delegate view to a dirty type so that whenever its value is changed, that type will be marked as dirty.
  * This method will not trigger an immediate update.
  *

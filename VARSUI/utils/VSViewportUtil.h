@@ -99,7 +99,16 @@ NS_ROOT_CLASS @interface VSViewportUtil
  *
  * @return UIInterfaceOrientation value.
  */
-+ (UIInterfaceOrientation)orientationOfViewport;
++ (UIInterfaceOrientation)interfaceOrientationOfViewport;
+
+/**
+ * Gets the interface orientation of a given rect.
+ *
+ * @param rect
+ *
+ * @return UIInterfaceOrientation value.
+ */
++ (UIInterfaceOrientation)interfaceOrientationOfRect:(CGRect)rect;
 
 /**
  * Converts a UIInterfaceOrientationMask enum to a UIInterfaceOrientation enum.

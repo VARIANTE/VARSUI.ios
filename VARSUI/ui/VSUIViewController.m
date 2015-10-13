@@ -41,6 +41,17 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self loadModel];
+        [self willInit];
+        [self didInit];
+    }
+
+    return self;
+}
+
 - (void)dealloc {
     [self willDealloc];
 
