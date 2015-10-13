@@ -37,19 +37,6 @@
     return _updateDelegate;
 }
 
-/**
- * @inheritDoc VSUIViewUpdateDelegate
- */
-@dynamic interfaceOrientation;
-
-- (UIInterfaceOrientation)interfaceOrientation {
-    return [self.updateDelegate interfaceOrientation];
-}
-
-- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    [self.updateDelegate setInterfaceOrientation:interfaceOrientation];
-}
-
 #pragma mark Behaviors
 
 @synthesize shouldRedirectTouchesToNextResponder = _shouldRedirectTouchesToNextResponder;

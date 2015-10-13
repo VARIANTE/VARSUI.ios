@@ -1,9 +1,9 @@
 /**
- * VARSUI
- * (c) VARIANTE <http://variante.io>
+ *  VARSUI
+ *  (c) VARIANTE <http://variante.io>
  *
- * This software is released under the MIT License:
- * http://www.opensource.org/licenses/mit-license.php
+ *  This software is released under the MIT License:
+ *  http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>
@@ -95,30 +95,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewWillLayoutSubviews {
-    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)]) {
-        VSUIViewUpdate *viewUpdateDelegate = ((id<VSUIViewUpdateDelegate>)self.view).updateDelegate;
-
-        if (viewUpdateDelegate.interfaceOrientation != self.interfaceOrientation) {
-            [viewUpdateDelegate setInterfaceOrientation:self.interfaceOrientation];
-        }
-    }
-
-    [super viewWillLayoutSubviews];
-}
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)]) {
-        VSUIViewUpdate *viewUpdateDelegate = ((id<VSUIViewUpdateDelegate>)self.view).updateDelegate;
-
-        if (viewUpdateDelegate.interfaceOrientation != toInterfaceOrientation) {
-            [viewUpdateDelegate setInterfaceOrientation:toInterfaceOrientation];
-        }
-    }
-
-    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-}
-
 - (void)currentLocaleDidChange:(NSDictionary *)context {
     if ([self.view conformsToProtocol:@protocol(VSUIViewUpdateDelegate)]) {
         VSUIViewUpdate *viewUpdateDelegate = ((id<VSUIViewUpdateDelegate>)self.view).updateDelegate;
@@ -152,11 +128,11 @@
 }
 
 /**
- * @private
+ *  @private
  *
- * NSNotificationCenter selector invoked when NSCurrentLocale did change.
+ *  NSNotificationCenter selector invoked when NSCurrentLocale did change.
  *
- * @param note
+ *  @param note
  */
 - (void)_onCurrentLocaleDidChange:(NSNotification *)note {
     NSString *oldLocaleIdentifier = _cachedLocaleIdentifier;
@@ -169,33 +145,33 @@
 }
 
 /**
- * @private
+ *  @private
  *
- * NSNotificationCenter selector invoked when application did become active.
+ *  NSNotificationCenter selector invoked when application did become active.
  *
- * @param note
+ *  @param note
  */
 - (void)_onApplicationDidBecomeActive:(NSNotification *)note {
     [self applicationDidBecomeActive:note.userInfo];
 }
 
 /**
- * @private
+ *  @private
  *
- * NSNotificationCenter selector invoked when UI config did change.
+ *  NSNotificationCenter selector invoked when UI config did change.
  *
- * @param note
+ *  @param note
  */
 - (void)_onViewConfigDidChange:(NSNotification *)note {
     [self viewConfigDidChange:note.userInfo];
 }
 
 /**
- * @private
+ *  @private
  *
- * NSNotificationCenter selector invoked when UI style did change.
+ *  NSNotificationCenter selector invoked when UI style did change.
  *
- * @param note
+ *  @param note
  */
 - (void)_onViewStyleDidChange:(NSNotification *)note {
     [self viewStyleDidChange:note.userInfo];

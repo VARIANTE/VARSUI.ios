@@ -1,9 +1,9 @@
 /**
- * VARSUI
- * (c) VARIANTE <http://variante.io>
+ *  VARSUI
+ *  (c) VARIANTE <http://variante.io>
  *
- * This software is released under the MIT License:
- * http://www.opensource.org/licenses/mit-license.php
+ *  This software is released under the MIT License:
+ *  http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>
@@ -11,7 +11,7 @@
 #import "VSUILabel.h"
 
 /**
- * Default UUID.
+ *  Default UUID.
  */
 static const int DEFAULT_UUID = -1;
 
@@ -31,7 +31,7 @@ static const int DEFAULT_UUID = -1;
 #pragma mark VSUIViewUpdateDelegate
 
 /**
- * @inheritDoc VSUIViewUpdateDelegate
+ *  @inheritDoc VSUIViewUpdateDelegate
  */
 @dynamic updateDelegate;
 
@@ -44,23 +44,10 @@ static const int DEFAULT_UUID = -1;
     return _updateDelegate;
 }
 
-/**
- * @inheritDoc VSUIViewUpdateDelegate
- */
-@dynamic interfaceOrientation;
-
-- (UIInterfaceOrientation)interfaceOrientation {
-    return [self.updateDelegate interfaceOrientation];
-}
-
-- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    [self.updateDelegate setInterfaceOrientation:interfaceOrientation];
-}
-
 #pragma mark UILabel
 
 /**
- * @inheritDoc UILabel
+ *  @inheritDoc UILabel
  */
 - (void)setText:(NSString *)text {
     [super setText:text];
@@ -92,14 +79,14 @@ static const int DEFAULT_UUID = -1;
 @synthesize textEdgeInsets = _textEdgeInsets;
 
 /**
- * @inheritDoc VSUIViewUpdateDelegate
+ *  @inheritDoc VSUIViewUpdateDelegate
  */
 - (void)update {
     [self.updateDelegate viewDidUpdate];
 }
 
 /**
- * @inheritDoc VSUIViewUpdateDelegate
+ *  @inheritDoc VSUIViewUpdateDelegate
  */
 - (BOOL)isDirty:(VSUIDirtyType)dirtyType {
     return [self.updateDelegate isDirty:dirtyType];
@@ -108,7 +95,7 @@ static const int DEFAULT_UUID = -1;
 #pragma mark Lifecycle
 
 /**
- * @inheritDoc UIView
+ *  @inheritDoc UIView
  */
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -141,7 +128,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc NSObject
+ *  @inheritDoc NSObject
  */
 - (void)dealloc {
     [self willDealloc];
@@ -177,7 +164,7 @@ static const int DEFAULT_UUID = -1;
 #pragma mark Drawing
 
 /**
- * @inheritDoc UIView
+ *  @inheritDoc UIView
  */
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -186,7 +173,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc UILabel
+ *  @inheritDoc UILabel
  */
 - (void)drawTextInRect:(CGRect)rect {
     return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, self.textEdgeInsets)];
@@ -195,7 +182,7 @@ static const int DEFAULT_UUID = -1;
 #pragma mark Behaviors
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (BOOL)canBecomeFirstResponder {
     return self.menuEnabled;
@@ -204,7 +191,7 @@ static const int DEFAULT_UUID = -1;
 #pragma mark Context Menu
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
     if (self.menuEnabled) {
@@ -216,7 +203,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)copy:(id)sender {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
@@ -224,7 +211,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)paste:(id)sender {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
@@ -251,11 +238,11 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @private
+ *  @private
  *
- * Handler invoked when the menu should be revealed.
+ *  Handler invoked when the menu should be revealed.
  *
- * @param gestureRecognizer
+ *  @param gestureRecognizer
  */
 - (void)_onRevealMenu:(UIGestureRecognizer *)gestureRecognizer {
     if (!self.menuGesturesEnabled) return;
@@ -266,11 +253,11 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @private
+ *  @private
  *
- * Handler invoked when the menu should be hidden.
+ *  Handler invoked when the menu should be hidden.
  *
- * @param gestureRecognizer
+ *  @param gestureRecognizer
  */
 - (void)_onHideMenu:(UIGestureRecognizer *)gestureRecognizer {
     [self hideMenu];
@@ -279,7 +266,7 @@ static const int DEFAULT_UUID = -1;
 #pragma mark Event Handling
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if (self.shouldRedirectTouchesToNextResponder) {
@@ -291,7 +278,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     if (self.shouldRedirectTouchesToNextResponder) {
@@ -303,7 +290,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     if (self.shouldRedirectTouchesToNextResponder) {
@@ -315,7 +302,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     if (!self.menuGesturesEnabled) return;

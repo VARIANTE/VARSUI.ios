@@ -1,11 +1,11 @@
 /**
- * VARSUI
- * (c) VARIANTE <http://variante.io>
+ *  VARSUI
+ *  (c) VARIANTE <http://variante.io>
  *
- * Utility for UI manipulation, containing various helper methods.
+ *  Utility for UI manipulation, containing various helper methods.
  *
- * This software is released under the MIT License:
- * http://www.opensource.org/licenses/mit-license.php
+ *  This software is released under the MIT License:
+ *  http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>

@@ -1,9 +1,9 @@
 /**
- * VARSUI
- * (c) VARIANTE <http://variante.io>
+ *  VARSUI
+ *  (c) VARIANTE <http://variante.io>
  *
- * This software is released under the MIT License:
- * http://www.opensource.org/licenses/mit-license.php
+ *  This software is released under the MIT License:
+ *  http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>
@@ -24,7 +24,7 @@
 #pragma mark VSUIViewUpdateDelegate
 
 /**
- * @inheritDoc VSUIViewUpdateDelegate
+ *  @inheritDoc VSUIViewUpdateDelegate
  */
 @dynamic updateDelegate;
 
@@ -35,19 +35,6 @@
     [_updateDelegate setDelegate:self];
 
     return _updateDelegate;
-}
-
-/**
- * @inheritDoc VSUIViewUpdateDelegate
- */
-@dynamic interfaceOrientation;
-
-- (UIInterfaceOrientation)interfaceOrientation {
-    return [self.updateDelegate interfaceOrientation];
-}
-
-- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    [self.updateDelegate setInterfaceOrientation:interfaceOrientation];
 }
 
 #pragma mark Behaviors
@@ -73,21 +60,21 @@
 #pragma mark VSUIViewUpdateDelegate
 
 /**
- * @inheritDoc VSUIViewUpdateDelegate
+ *  @inheritDoc VSUIViewUpdateDelegate
  */
 - (void)setNeedsUpdate {
     [self update];
 }
 
 /**
- * @inheritDoc VSUIViewUpdateDelegate
+ *  @inheritDoc VSUIViewUpdateDelegate
  */
 - (void)update {
     [self.updateDelegate viewDidUpdate];
 }
 
 /**
- * @inheritDoc VSUIViewUpdateDelegate
+ *  @inheritDoc VSUIViewUpdateDelegate
  */
 - (BOOL)isDirty:(VSUIDirtyType)dirtyType {
     return [self.updateDelegate isDirty:dirtyType];
@@ -96,7 +83,7 @@
 #pragma mark Lifecycle
 
 /**
- * @inheritDoc UIView
+ *  @inheritDoc UIView
  */
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -110,7 +97,7 @@
 }
 
 /**
- * @inheritDoc UITextView
+ *  @inheritDoc UITextView
  */
 - (id)initWithFrame:(CGRect)frame textContainer:(NSTextContainer *)textContainer {
     self = [super initWithFrame:frame textContainer:textContainer];
@@ -124,7 +111,7 @@
 }
 
 /**
- * @inheritDoc NSObject
+ *  @inheritDoc NSObject
  */
 - (void)dealloc {
     [self willDealloc];
@@ -185,7 +172,7 @@
 #pragma mark Event Handling
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if (self.shouldRedirectTouchesToNextResponder) {
@@ -197,7 +184,7 @@
 }
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     if (self.shouldRedirectTouchesToNextResponder) {
@@ -209,7 +196,7 @@
 }
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     if (self.shouldRedirectTouchesToNextResponder) {
@@ -221,7 +208,7 @@
 }
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     if (self.shouldRedirectTouchesToNextResponder) {

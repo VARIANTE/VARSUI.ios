@@ -1,11 +1,11 @@
 /**
- * VARSUI
- * (c) VARIANTE <http://variante.io>
+ *  VARSUI
+ *  (c) VARIANTE <http://variante.io>
  *
- * Utility for UI manipulation, containing various helper methods.
+ *  Utility for UI manipulation, containing various helper methods.
  *
- * This software is released under the MIT License:
- * http://www.opensource.org/licenses/mit-license.php
+ *  This software is released under the MIT License:
+ *  http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <Foundation/Foundation.h>
@@ -14,23 +14,23 @@
 NS_ROOT_CLASS @interface VSUIUtil
 
 /**
- * Computes the height of a UITextView given a string and width.
+ *  Computes the height of a UITextView given a string and width.
  *
- * @param text
- * @param width
+ *  @param text
+ *  @param width
  *
- * @return CGFloat value of the height.
+ *  @return CGFloat value of the height.
  */
 + (CGFloat)heightOfTextViewWithText:(NSString *)text font:(UIFont *)font width:(CGFloat)width;
 
 /**
- * Generates a rectangular UIImage instance with the specified color and size.
+ *  Generates a rectangular UIImage instance with the specified color and size.
  *
- * @param color
- * @param size
+ *  @param color
+ *  @param size
  *
- * @return UIImage instance.
+ *  @return UIImage instance.
  */
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
- 
+
 @end

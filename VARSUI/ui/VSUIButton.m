@@ -1,9 +1,9 @@
 /**
- * VARSUI
- * (c) VARIANTE <http://variante.io>
+ *  VARSUI
+ *  (c) VARIANTE <http://variante.io>
  *
- * This software is released under the MIT License:
- * http://www.opensource.org/licenses/mit-license.php
+ *  This software is released under the MIT License:
+ *  http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>
@@ -13,7 +13,7 @@
 #import "VSUIUtil.h"
 
 /**
- * Default UUID of this VSUIButton instance.
+ *  Default UUID of this VSUIButton instance.
  */
 static const int DEFAULT_UUID = -1;
 
@@ -38,7 +38,7 @@ static const int DEFAULT_UUID = -1;
 #pragma mark VSUIViewUpdateDelegate
 
 /**
- * @inheritDoc VSUIViewUpdateDelegate
+ *  @inheritDoc VSUIViewUpdateDelegate
  */
 @dynamic updateDelegate;
 
@@ -51,23 +51,10 @@ static const int DEFAULT_UUID = -1;
     return _updateDelegate;
 }
 
-/**
- * @inheritDoc VSUIViewUpdateDelegate
- */
-@dynamic interfaceOrientation;
-
-- (UIInterfaceOrientation)interfaceOrientation {
-    return [self.updateDelegate interfaceOrientation];
-}
-
-- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    [self.updateDelegate setInterfaceOrientation:interfaceOrientation];
-}
-
 #pragma mark States
 
 /**
- * @inheritDoc UIControl
+ *  @inheritDoc UIControl
  */
 - (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
@@ -76,7 +63,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc UIControl
+ *  @inheritDoc UIControl
  */
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
@@ -94,7 +81,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc UIView
+ *  @inheritDoc UIView
  */
 - (void)setHidden:(BOOL)hidden {
     if (self.shouldAnimateVisibility) {
@@ -114,7 +101,7 @@ static const int DEFAULT_UUID = -1;
 #pragma mark Styles
 
 /**
- * @inheritDoc UIView
+ *  @inheritDoc UIView
  */
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
     if (self.shouldAnimateBackgroundColor) {
@@ -135,7 +122,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc UIButton
+ *  @inheritDoc UIButton
  */
 - (void)setAttributedTitle:(NSAttributedString *)title forState:(UIControlState)state {
     NSRange range = NSMakeRange(0, title.string.length);
@@ -147,7 +134,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc UIButton
+ *  @inheritDoc UIButton
  */
 - (void)setTitleColor:(UIColor *)color forState:(UIControlState)state {
     [super setTitleColor:color forState:state];
@@ -186,14 +173,14 @@ static const int DEFAULT_UUID = -1;
 #pragma mark VSUIViewUpdateDelegate
 
 /**
- * @inheritDoc VSUIViewUpdateDelegate
+ *  @inheritDoc VSUIViewUpdateDelegate
  */
 - (void)setNeedsUpdate {
     [self update];
 }
 
 /**
- * @inheritDoc VSUIViewUpdateDelegate
+ *  @inheritDoc VSUIViewUpdateDelegate
  */
 - (void)update {
     if ([self isDirty:VSUIDirtyTypeStyle|VSUIDirtyTypeState]) {
@@ -204,7 +191,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc VSUIViewUpdateDelegate
+ *  @inheritDoc VSUIViewUpdateDelegate
  */
 - (BOOL)isDirty:(VSUIDirtyType)dirtyType {
     return [self.updateDelegate isDirty:dirtyType];
@@ -213,7 +200,7 @@ static const int DEFAULT_UUID = -1;
 #pragma mark Lifecycle
 
 /**
- * @inheritDoc UIView
+ *  @inheritDoc UIView
  */
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -246,7 +233,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc NSObject
+ *  @inheritDoc NSObject
  */
 - (void)dealloc {
     [self willDealloc];
@@ -297,9 +284,9 @@ static const int DEFAULT_UUID = -1;
 #pragma mark Updating
 
 /**
- * @private
+ *  @private
  *
- * Applies state-specific update.
+ *  Applies state-specific update.
  */
 - (void)_updateState {
     [self setBackgroundColor:[self _getBackgroundColorForState:self.state]];
@@ -308,7 +295,7 @@ static const int DEFAULT_UUID = -1;
 #pragma mark Event Handling
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if (self.shouldRedirectTouchesToNextResponder) {
@@ -320,7 +307,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     if (self.shouldRedirectTouchesToNextResponder) {
@@ -332,7 +319,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     if (self.shouldRedirectTouchesToNextResponder) {
@@ -344,7 +331,7 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @inheritDoc UIResponder
+ *  @inheritDoc UIResponder
  */
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     if (self.shouldRedirectTouchesToNextResponder) {
@@ -371,14 +358,14 @@ static const int DEFAULT_UUID = -1;
 }
 
 /**
- * @private
+ *  @private
  *
- * Gets the background color for the specified UIControlState.
+ *  Gets the background color for the specified UIControlState.
  *
- * @param state
+ *  @param state
  *
- * @return The corresponding background color if specified; the normal background color if
- *         unspecified; nil if even the normal background is unspecified.
+ *  @return The corresponding background color if specified; the normal background color if
+ *          unspecified; nil if even the normal background is unspecified.
  */
 - (UIColor *)_getBackgroundColorForState:(UIControlState)state {
     NSNumber *key = @(state);

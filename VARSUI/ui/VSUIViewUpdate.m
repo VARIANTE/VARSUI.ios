@@ -1,9 +1,9 @@
 /**
- * VARSUI
- * (c) VARIANTE <http://variante.io>
+ *  VARSUI
+ *  (c) VARIANTE <http://variante.io>
  *
- * This software is released under the MIT License:
- * http://www.opensource.org/licenses/mit-license.php
+ *  This software is released under the MIT License:
+ *  http://www.opensource.org/licenses/mit-license.php
  */
 
 #import <VARS/VARS.h>
@@ -19,17 +19,17 @@
 #pragma mark Updating
 
 /**
- * Dictionary that maps a property to a dirty type.
+ *  Dictionary that maps a property to a dirty type.
  */
 @property (nonatomic, strong, readonly) NSMutableDictionary *dirtyPropertyMap;
 
 /**
- * Binary table that indicates what flags are dirty.
+ *  Binary table that indicates what flags are dirty.
  */
 @property (nonatomic) VSUIDirtyType dirtyTable;
 
 /**
- * Indicates whether the view delegate is pending update (needs update when it is not hidden).
+ *  Indicates whether the view delegate is pending update (needs update when it is not hidden).
  */
 @property (nonatomic) BOOL pendingUpdate;
 
@@ -72,28 +72,6 @@
 
 @synthesize pendingUpdate = _pendingUpdate;
 
-@synthesize interfaceOrientation = _interfaceOrientation;
-
-- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    if (_interfaceOrientation != interfaceOrientation) {
-        _interfaceOrientation = interfaceOrientation;
-        [self setDirty:VSUIDirtyTypeOrientation];
-    }
-
-    // Propagate invalidations to subviews of the view delegate instance if specified.
-    if ((self.shouldAutomaticallyForwardUpdateMethods & VSUIDirtyTypeOrientation) != 0) {
-        for (UIView *subview in self.delegate.subviews) {
-            if ([subview conformsToProtocol:@protocol(VSUIViewUpdateDelegate)]) {
-                VSUIViewUpdate *viewUpdateDelegate = ((id<VSUIViewUpdateDelegate>)subview).updateDelegate;
-
-                if ((viewUpdateDelegate.shouldAutomaticallyBlockForwardedUpdateMethods & VSUIDirtyTypeOrientation) != VSUIDirtyTypeOrientation) {
-                    [viewUpdateDelegate setInterfaceOrientation:interfaceOrientation];
-                }
-            }
-        }
-    }
-}
-
 @synthesize shouldAutomaticallyForwardUpdateMethods = _automaticallyForwardedDirtyTypes;
 
 @synthesize shouldAutomaticallyBlockForwardedUpdateMethods = _automaticallyBlockedForwardedDirtyTypes;
@@ -101,7 +79,7 @@
 #pragma mark NSKeyValueObserving
 
 /**
- * @inheritDoc NSKeyValueObserving
+ *  @inheritDoc NSKeyValueObserving
  */
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (object == self.delegate) {
@@ -135,7 +113,7 @@
 #pragma mark Lifecycle
 
 /**
- * @inheritDoc NSObject
+ *  @inheritDoc NSObject
  */
 - (id)init {
     self = [super init];
@@ -145,7 +123,6 @@
 
         [self setShouldAutomaticallyForwardUpdateMethods:VSUIDirtyTypeNone];
         [self setShouldAutomaticallyBlockForwardedUpdateMethods:VSUIDirtyTypeNone];
-        [self setInterfaceOrientation:[VSViewportUtil interfaceOrientationOfViewport]];
 
         self.dirtyTable = VSUIDirtyTypeNone;
         self.pendingUpdate = NO;
@@ -155,7 +132,7 @@
 }
 
 /**
- * @inheritDoc NSObject
+ *  @inheritDoc NSObject
  */
 - (void)dealloc {
     [self.delegate removeObserver:self forKeyPath:@"hidden"];
