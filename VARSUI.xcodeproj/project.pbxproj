@@ -22,46 +22,46 @@
 
 /* Begin PBXBuildFile section */
 		6B00AAC91BBA57B5009C35C9 /* VSUIDirtyType.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAA31BBA57B5009C35C9 /* VSUIDirtyType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AACA1BBA57B5009C35C9 /* VSUIDirtyType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAA41BBA57B5009C35C9 /* VSUIDirtyType.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AACA1BBA57B5009C35C9 /* VSUIDirtyType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAA41BBA57B5009C35C9 /* VSUIDirtyType.m */; };
 		6B00AACB1BBA57B5009C35C9 /* VSUINotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAA61BBA57B5009C35C9 /* VSUINotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B00AACC1BBA57B5009C35C9 /* VSUIButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAA81BBA57B5009C35C9 /* VSUIButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AACD1BBA57B5009C35C9 /* VSUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAA91BBA57B5009C35C9 /* VSUIButton.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AACD1BBA57B5009C35C9 /* VSUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAA91BBA57B5009C35C9 /* VSUIButton.m */; };
 		6B00AACE1BBA57B5009C35C9 /* VSUIControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAAA1BBA57B5009C35C9 /* VSUIControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AACF1BBA57B5009C35C9 /* VSUIControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAAB1BBA57B5009C35C9 /* VSUIControl.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AACF1BBA57B5009C35C9 /* VSUIControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAAB1BBA57B5009C35C9 /* VSUIControl.m */; };
 		6B00AAD01BBA57B5009C35C9 /* VSUILabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAAC1BBA57B5009C35C9 /* VSUILabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AAD11BBA57B5009C35C9 /* VSUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAAD1BBA57B5009C35C9 /* VSUILabel.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AAD11BBA57B5009C35C9 /* VSUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAAD1BBA57B5009C35C9 /* VSUILabel.m */; };
 		6B00AAD21BBA57B5009C35C9 /* VSUIModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAAE1BBA57B5009C35C9 /* VSUIModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AAD31BBA57B5009C35C9 /* VSUIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAAF1BBA57B5009C35C9 /* VSUIModel.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AAD31BBA57B5009C35C9 /* VSUIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAAF1BBA57B5009C35C9 /* VSUIModel.m */; };
 		6B00AAD41BBA57B5009C35C9 /* VSUIScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAB01BBA57B5009C35C9 /* VSUIScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AAD51BBA57B5009C35C9 /* VSUIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAB11BBA57B5009C35C9 /* VSUIScrollView.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AAD51BBA57B5009C35C9 /* VSUIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAB11BBA57B5009C35C9 /* VSUIScrollView.m */; };
 		6B00AAD61BBA57B5009C35C9 /* VSUITableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAB21BBA57B5009C35C9 /* VSUITableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AAD71BBA57B5009C35C9 /* VSUITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAB31BBA57B5009C35C9 /* VSUITableView.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AAD71BBA57B5009C35C9 /* VSUITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAB31BBA57B5009C35C9 /* VSUITableView.m */; };
 		6B00AAD81BBA57B5009C35C9 /* VSUITextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAB41BBA57B5009C35C9 /* VSUITextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AAD91BBA57B5009C35C9 /* VSUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAB51BBA57B5009C35C9 /* VSUITextField.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AAD91BBA57B5009C35C9 /* VSUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAB51BBA57B5009C35C9 /* VSUITextField.m */; };
 		6B00AADA1BBA57B5009C35C9 /* VSUITextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAB61BBA57B5009C35C9 /* VSUITextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AADB1BBA57B5009C35C9 /* VSUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAB71BBA57B5009C35C9 /* VSUITextView.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AADB1BBA57B5009C35C9 /* VSUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAB71BBA57B5009C35C9 /* VSUITextView.m */; };
 		6B00AADC1BBA57B5009C35C9 /* VSUIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAB81BBA57B5009C35C9 /* VSUIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AADD1BBA57B5009C35C9 /* VSUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAB91BBA57B5009C35C9 /* VSUIView.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AADD1BBA57B5009C35C9 /* VSUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAB91BBA57B5009C35C9 /* VSUIView.m */; };
 		6B00AADE1BBA57B5009C35C9 /* VSUIViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AABA1BBA57B5009C35C9 /* VSUIViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AADF1BBA57B5009C35C9 /* VSUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AABB1BBA57B5009C35C9 /* VSUIViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AADF1BBA57B5009C35C9 /* VSUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AABB1BBA57B5009C35C9 /* VSUIViewController.m */; };
 		6B00AAE01BBA57B5009C35C9 /* VSUIViewUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AABC1BBA57B5009C35C9 /* VSUIViewUpdate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AAE11BBA57B5009C35C9 /* VSUIViewUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AABD1BBA57B5009C35C9 /* VSUIViewUpdate.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AAE11BBA57B5009C35C9 /* VSUIViewUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AABD1BBA57B5009C35C9 /* VSUIViewUpdate.m */; };
 		6B00AAE21BBA57B5009C35C9 /* VSColorUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AABF1BBA57B5009C35C9 /* VSColorUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AAE31BBA57B5009C35C9 /* VSColorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAC01BBA57B5009C35C9 /* VSColorUtil.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AAE31BBA57B5009C35C9 /* VSColorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAC01BBA57B5009C35C9 /* VSColorUtil.m */; };
 		6B00AAE41BBA57B5009C35C9 /* VSDeviceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAC11BBA57B5009C35C9 /* VSDeviceUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AAE51BBA57B5009C35C9 /* VSDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAC21BBA57B5009C35C9 /* VSDeviceUtil.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AAE51BBA57B5009C35C9 /* VSDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAC21BBA57B5009C35C9 /* VSDeviceUtil.m */; };
 		6B00AAE61BBA57B5009C35C9 /* VSStoreKitUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAC31BBA57B5009C35C9 /* VSStoreKitUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AAE71BBA57B5009C35C9 /* VSStoreKitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAC41BBA57B5009C35C9 /* VSStoreKitUtil.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AAE71BBA57B5009C35C9 /* VSStoreKitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAC41BBA57B5009C35C9 /* VSStoreKitUtil.m */; };
 		6B00AAE81BBA57B5009C35C9 /* VSUIUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAC51BBA57B5009C35C9 /* VSUIUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AAE91BBA57B5009C35C9 /* VSUIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAC61BBA57B5009C35C9 /* VSUIUtil.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AAE91BBA57B5009C35C9 /* VSUIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAC61BBA57B5009C35C9 /* VSUIUtil.m */; };
 		6B00AAEA1BBA57B5009C35C9 /* VSViewportUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAC71BBA57B5009C35C9 /* VSViewportUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B00AAEB1BBA57B5009C35C9 /* VSViewportUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAC81BBA57B5009C35C9 /* VSViewportUtil.m */; settings = {ASSET_TAGS = (); }; };
+		6B00AAEB1BBA57B5009C35C9 /* VSViewportUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAC81BBA57B5009C35C9 /* VSViewportUtil.m */; };
 		6B6856C91BC63CA000067027 /* VARS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6856C81BC63CA000067027 /* VARS.framework */; };
 		6B6CAB081BBA570D00B6AD76 /* VARSUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B6CAB071BBA570D00B6AD76 /* VARSUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B6CAB0F1BBA570D00B6AD76 /* VARSUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6CAB041BBA570D00B6AD76 /* VARSUI.framework */; settings = {ASSET_TAGS = (); }; };
+		6B6CAB0F1BBA570D00B6AD76 /* VARSUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6CAB041BBA570D00B6AD76 /* VARSUI.framework */; };
 		6B6CAB141BBA570D00B6AD76 /* VARSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6CAB131BBA570D00B6AD76 /* VARSUITests.m */; };
 		6BE21F591BBBBAC000C5EB7B /* VSQuartzUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE21F571BBBBAC000C5EB7B /* VSQuartzUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6BE21F5A1BBBBAC000C5EB7B /* VSQuartzUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE21F581BBBBAC000C5EB7B /* VSQuartzUtil.m */; settings = {ASSET_TAGS = (); }; };
+		6BE21F5A1BBBBAC000C5EB7B /* VSQuartzUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE21F581BBBBAC000C5EB7B /* VSQuartzUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -626,6 +626,7 @@
 		6BF353511BBBCA3C007C4809 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: VARIANTE Studios Inc. (FBA3ZNAVY6)";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -634,6 +635,7 @@
 		6BF353521BBBCA3C007C4809 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: VARIANTE Studios Inc. (FBA3ZNAVY6)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

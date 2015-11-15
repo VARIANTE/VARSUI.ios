@@ -49,9 +49,11 @@
         [self setInputView:dummyKeyboard];
         vs_dealloc(dummyKeyboard);
 
-        UITextInputAssistantItem *item = [self inputAssistantItem];
-        [item setLeadingBarButtonGroups:@[]];
-        [item setTrailingBarButtonGroups:@[]];
+        if ([self respondsToSelector:NSSelectorFromString(@"inputAssistantItem")]) {
+            UITextInputAssistantItem *item = [self inputAssistantItem];
+            [item setLeadingBarButtonGroups:@[]];
+            [item setTrailingBarButtonGroups:@[]];
+        }
     }
 }
 
