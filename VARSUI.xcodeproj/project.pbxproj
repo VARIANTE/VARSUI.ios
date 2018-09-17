@@ -56,10 +56,10 @@
 		6B00AAE91BBA57B5009C35C9 /* VSUIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAC61BBA57B5009C35C9 /* VSUIUtil.m */; };
 		6B00AAEA1BBA57B5009C35C9 /* VSViewportUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B00AAC71BBA57B5009C35C9 /* VSViewportUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B00AAEB1BBA57B5009C35C9 /* VSViewportUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00AAC81BBA57B5009C35C9 /* VSViewportUtil.m */; };
-		6B6856C91BC63CA000067027 /* VARS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6856C81BC63CA000067027 /* VARS.framework */; };
 		6B6CAB081BBA570D00B6AD76 /* VARSUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B6CAB071BBA570D00B6AD76 /* VARSUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B6CAB0F1BBA570D00B6AD76 /* VARSUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6CAB041BBA570D00B6AD76 /* VARSUI.framework */; };
 		6B6CAB141BBA570D00B6AD76 /* VARSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6CAB131BBA570D00B6AD76 /* VARSUITests.m */; };
+		6BB4CD5321506F210098D60F /* VARS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB4CD5221506F210098D60F /* VARS.framework */; };
 		6BE21F591BBBBAC000C5EB7B /* VSQuartzUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE21F571BBBBAC000C5EB7B /* VSQuartzUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BE21F5A1BBBBAC000C5EB7B /* VSQuartzUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE21F581BBBBAC000C5EB7B /* VSQuartzUtil.m */; };
 /* End PBXBuildFile section */
@@ -110,13 +110,13 @@
 		6B00AAC61BBA57B5009C35C9 /* VSUIUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSUIUtil.m; sourceTree = "<group>"; };
 		6B00AAC71BBA57B5009C35C9 /* VSViewportUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSViewportUtil.h; sourceTree = "<group>"; };
 		6B00AAC81BBA57B5009C35C9 /* VSViewportUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSViewportUtil.m; sourceTree = "<group>"; };
-		6B6856C81BC63CA000067027 /* VARS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VARS.framework; path = ../../../../../../../Library/Frameworks/iOS/VARS.framework; sourceTree = "<group>"; };
 		6B6CAB041BBA570D00B6AD76 /* VARSUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VARSUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B6CAB071BBA570D00B6AD76 /* VARSUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VARSUI.h; sourceTree = "<group>"; };
 		6B6CAB091BBA570D00B6AD76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B6CAB0E1BBA570D00B6AD76 /* VARSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VARSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B6CAB131BBA570D00B6AD76 /* VARSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VARSUITests.m; sourceTree = "<group>"; };
 		6B6CAB151BBA570D00B6AD76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BB4CD5221506F210098D60F /* VARS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VARS.framework; path = Frameworks/VARS.framework; sourceTree = "<group>"; };
 		6BE21F571BBBBAC000C5EB7B /* VSQuartzUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSQuartzUtil.h; sourceTree = "<group>"; };
 		6BE21F581BBBBAC000C5EB7B /* VSQuartzUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSQuartzUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,7 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B6856C91BC63CA000067027 /* VARS.framework in Frameworks */,
+				6BB4CD5321506F210098D60F /* VARS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +250,7 @@
 		6BFD84601BBA5B8E0000A0AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6B6856C81BC63CA000067027 /* VARS.framework */,
+				6BB4CD5221506F210098D60F /* VARS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -335,7 +335,7 @@
 				TargetAttributes = {
 					6B6CAB031BBA570D00B6AD76 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = FBA3ZNAVY6;
+						DevelopmentTeam = YT36MC7GUW;
 					};
 					6B6CAB0D1BBA570D00B6AD76 = {
 						CreatedOnToolsVersion = 7.0;
@@ -394,7 +394,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\n# Kill current session if a prior session is still running.\nif [ -n \"$VARS_MULTIPLATFORM_BUILD_IN_PROGRESS\" ]; then\nexit 0\nfi\n\n# Set environment variable to mark this session in progress.\nexport VARS_MULTIPLATFORM_BUILD_IN_PROGRESS=1\n\nVARS_FRAMEWORK_NAME=\"${PROJECT_NAME}.framework\"\nVARS_LIPO_INPUTS=()\n\n# Builds the static library using the specified SDK.\n# @param sdk  The SDK used (i.e. macosx, iphoneos, iphonesimulator, watchos, watchsimulator)\nfunction build_static_library {\n    xcodebuild \\\n    -target \"${PROJECT_NAME}\" \\\n    -configuration \"${CONFIGURATION}\" \\\n    -sdk \"${1}\" \\\n    OTHER_CFLAGS=\"-fembed-bitcode\" \\\n    ONLY_ACTIVE_ARCH=NO \\\n    BUILD_DIR=\"${BUILD_DIR}\" \\\n    BUILD_ROOT=\"${BUILD_ROOT}\" \\\n    clean build\n\n    if [ \"${1}\" == \"macosx\" ]; then\n    VARS_LIPO_INPUTS+=(\"${BUILD_DIR}/${CONFIGURATION}/${VARS_FRAMEWORK_NAME}/${PROJECT_NAME}\")\n    else\n    VARS_LIPO_INPUTS+=(\"${BUILD_DIR}/${CONFIGURATION}-${1}/${VARS_FRAMEWORK_NAME}/${PROJECT_NAME}\")\n    fi\n}\n\nfor platform in ${SUPPORTED_PLATFORMS}\ndo\nbuild_static_library \"$platform\"\ndone\n\nrm -rf \"${INSTALL_DIR}/${VARS_FRAMEWORK_NAME}\"\ncp -a \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${VARS_FRAMEWORK_NAME}\" \"${INSTALL_DIR}\"\n\nlipo -create -output \"${INSTALL_DIR}/${VARS_FRAMEWORK_NAME}/${PROJECT_NAME}\" \"${VARS_LIPO_INPUTS[@]}\"\n\n\n";
+			shellScript = "set -e\n\n# Kill current session if a prior session is still running.\nif [ -n \"$VARS_MULTIPLATFORM_BUILD_IN_PROGRESS\" ]; then\nexit 0\nfi\n\n# Set environment variable to mark this session in progress.\nexport VARS_MULTIPLATFORM_BUILD_IN_PROGRESS=1\n\nVARS_FRAMEWORK_NAME=\"${PROJECT_NAME}.framework\"\nVARS_TMP_DIR=\"${PROJECT_DIR}/.tmp\"\nVARS_LIB_DIR=\"${PROJECT_DIR}/lib\"\nVARS_LIPO_INPUTS=()\n\n# Builds the static library using the specified SDK.\n# @param sdk  The SDK used (i.e. macosx, iphoneos, iphonesimulator, watchos, watchsimulator)\nfunction build_static_library {\nxcodebuild \\\n-target \"${PROJECT_NAME}\" \\\n-configuration \"${CONFIGURATION}\" \\\n-sdk \"${1}\" \\\nOTHER_CFLAGS=\"-fembed-bitcode\" \\\nONLY_ACTIVE_ARCH=NO \\\nBUILD_DIR=\"${VARS_TMP_DIR}\" \\\nBUILD_ROOT=\"${VARS_TMP_DIR}\" \\\nbuild\n\nif [ \"${1}\" == \"macosx\" ]; then\nVARS_LIPO_INPUTS+=(\"${VARS_TMP_DIR}/${CONFIGURATION}/${VARS_FRAMEWORK_NAME}/${PROJECT_NAME}\")\nelse\nVARS_LIPO_INPUTS+=(\"${VARS_TMP_DIR}/${CONFIGURATION}-${1}/${VARS_FRAMEWORK_NAME}/${PROJECT_NAME}\")\nfi\n}\n\nfor platform in ${SUPPORTED_PLATFORMS}\ndo\nbuild_static_library \"$platform\"\ndone\n\nmkdir -p \"${VARS_LIB_DIR}\"\nrm -rf \"${VARS_LIB_DIR}/${VARS_FRAMEWORK_NAME}\"\ncp -a \"${VARS_TMP_DIR}/${CONFIGURATION}-iphoneos/${VARS_FRAMEWORK_NAME}\" \"${VARS_LIB_DIR}\"\n\nlipo -create -output \"${VARS_LIB_DIR}/${VARS_FRAMEWORK_NAME}/${PROJECT_NAME}\" \"${VARS_LIPO_INPUTS[@]}\"\n\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -548,16 +548,18 @@
 		6B6CAB191BBA570D00B6AD76 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Developer ID Application: VARIANTE Studios Inc. (FBA3ZNAVY6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = NO;
 				DEPLOYMENT_POSTPROCESSING = NO;
+				DEVELOPMENT_TEAM = YT36MC7GUW;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks/iOS",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = VARSUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -576,16 +578,18 @@
 		6B6CAB1A1BBA570D00B6AD76 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Developer ID Application: VARIANTE Studios Inc. (FBA3ZNAVY6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = NO;
 				DEPLOYMENT_POSTPROCESSING = NO;
+				DEVELOPMENT_TEAM = YT36MC7GUW;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks/iOS",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = VARSUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
