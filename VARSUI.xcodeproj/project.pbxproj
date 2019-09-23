@@ -350,6 +350,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 6B6CAAFA1BBA570D00B6AD76;
@@ -548,6 +549,7 @@
 		6B6CAB191BBA570D00B6AD76 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = NO;
@@ -578,6 +580,7 @@
 		6B6CAB1A1BBA570D00B6AD76 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = NO;
@@ -630,6 +633,7 @@
 		6BF353511BBBCA3C007C4809 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: VARIANTE Studios Inc. (FBA3ZNAVY6)";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -639,6 +643,7 @@
 		6BF353521BBBCA3C007C4809 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: VARIANTE Studios Inc. (FBA3ZNAVY6)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
