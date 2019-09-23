@@ -1,3 +1,3 @@
-# VARS UI for iOS ![](https://img.shields.io/maintenance/no/2016)
+# VARS UI for iOS
 
 This is a UI framework for iOS meant for internal use only.
