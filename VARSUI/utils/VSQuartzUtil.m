@@ -122,7 +122,7 @@
         [textLayer setBounds:bounds];
         [textLayer setString:text];
         [textLayer setAlignmentMode:((alignment == nil) ? kCAAlignmentCenter : alignment)];
-        [textLayer setFont:(__bridge CFTypeRef)font.fontName];
+        [textLayer setFont:(__bridge CFTypeRef)font];
         [textLayer setFontSize:font.pointSize];
         [textLayer setForegroundColor:((foregroundColor == nil) ? [[UIColor whiteColor] CGColor] : [foregroundColor CGColor])];
         [textLayer setBackgroundColor:((backgroundColor == nil) ? [[UIColor clearColor] CGColor] : [backgroundColor CGColor])];
